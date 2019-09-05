@@ -8,17 +8,36 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<header>
-			<input type="text" placeholder="search" id="search-bar" />
-			<button type="button" id="search-parks">PARKS</button>
-			<button type="button" id="search-concerts">CONCERTO</button>
-			<button type="button" id="search-restaurants">GETINMYBELLY</button>
-			<button type="button" id="search-meetups">MEETUP</button>
-		</header>
-
-		<section id="itinerary-container"></section>
-		<section id="search-results-container"></section>
-
+		<header></header>
+		<main class="wrapper">
+			<div class="leftContainer">
+				<section id="searchContainer">
+					<div class="textInput">
+						<input type="text" placeholder="search" id="search-bar" />
+					</div>
+					<div class="searchButtons">
+						<button type="button" class="searchBtn" id="search-parks">
+							outdoors
+						</button>
+						<button type="button" class="searchBtn" id="search-concerts">
+							events
+						</button>
+						<button type="button" class="searchBtn" id="search-restaurants">
+							restaurants
+						</button>
+						<button type="button" class="searchBtn" id="search-meetups">
+							meetups
+						</button>
+					</div>
+				</section>
+				<section id="itinerary-container"></section>
+			</div>
+			<div class="rightContainer">
+				<div class="searchResults">
+					<section id="search-results-container"></section>
+				</div>
+			</div>
+		</main>
 		<footer></footer>
 		<script src="scripts/main.js"></script>
 	</body>
