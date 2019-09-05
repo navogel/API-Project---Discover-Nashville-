@@ -8,18 +8,20 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<header>
-			<input type="text" placeholder="search" id="search-bar" />
-			<button type="button" id="search-parks">PARKS</button>
-			<button type="button" id="search-concerts">CONCERTO</button>
-			<button type="button" id="search-restaurants">GETINMYBELLY</button>
-			<button type="button" id="search-meetups">MEETUP</button>
-		</header>
+		<header></header>
+		<main class="wrapper">
+			<section id="searchContainer">
+				<input type="text" placeholder="search" id="search-bar" />
+				<button type="button" id="search-parks">outdoors</button>
+				<button type="button" id="search-concerts">events</button>
+				<button type="button" id="search-restaurants">restaurants</button>
+				<button type="button" id="search-meetups">meetups</button>
+			</section>
 
-		<section id="itinerary-container"></section>
+			<section id="itinerary-container"></section>
 
-		<section id="search-results-container"></section>
-
+			<section id="search-results-container"></section>
+		</main>
 		<footer></footer>
 		<script src="scripts/main.js"></script>
 	</body>
