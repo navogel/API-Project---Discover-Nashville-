@@ -4,26 +4,35 @@ const WEB = {
 	tmSearchResults: dataObj => {
 		return `
         <section>
-        <h1>${dataObj.name}</h1>
-        
+        <h1><input type="radio"  name="concert" value="${dataObj.name}">${dataObj.name}</h1>
         </section>
         `;
 	},
+	
 	createHTML: dataObj => {
 		let parkData = `
         <section>
-        <h1>${dataObj.park_name}</h1>
-        
+        <h1><input type="radio"  name="park" value="${dataObj.park_name}">${dataObj.park_name}</h1>
         </section>`;
 		return parkData;
 	},
+	
 	ebResultsHTML: arrayItem => {
 		return `
         <section>
-        <h1>${arrayItem.name.text}</h1>
+        <h1><input type="radio"  name="meetup" value="${arrayItem.name.text}">${arrayItem.name.text}</h1>
         </section>
         `;
 	},
+	createItinerary: () => {
+		return `
+		<div>
+		<h1>${itinerary.parkName}</h1>
+		<h1>${itinerary.concert}</h1>
+		<h1>${itinerary.meetups}</h1>
+		</div>` 
+	}
+	
 };
 
 //API station
@@ -144,3 +153,30 @@ document
 		let searchTerm = document.querySelector("#search-bar").value;
 		lookUp(searchTerm);
 	});
+
+	const itinerary = {
+		parkName: "",
+		concert: "",
+		meetups: ""  
+  }
+
+  	document.getElementById("save").addEventListener('click', (event) => {
+		let selectedPark = document.querySelector('input[name="park"]:checked').value
+		itinerary.parkName = selectedPark
+   	    console.log(selectedPark)
+    	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+})
+
+	document.getElementById("save").addEventListener('click', (event) => {
+		let selectedConcert = document.querySelector('input[name="concert"]:checked').value
+		itinerary.concert = selectedConcert
+    	console.log(selectedConcert)
+   		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+})
+
+	document.getElementById("save").addEventListener('click', (event) => {
+		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
+		itinerary.meetups = selectedMeepups
+    	console.log(selectedMeepups)
+    	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+})
