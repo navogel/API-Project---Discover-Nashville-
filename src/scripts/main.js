@@ -16,7 +16,14 @@ const WEB = {
         
         </section>`;
 		return parkData;
-	}
+	},
+	ebResultsHTML: arrayItem => {
+		return `
+        <section>
+        <h1>${arrayItem.name.text}</h1>
+        </section>
+        `;
+	},
 };
 
 //API station
@@ -81,8 +88,8 @@ const DOM = {
 
 	ebResults: array => {
 		searchResultsContainer.innerHTML = "";
-		array.forEach(element => {
-			searchResultsContainer.innerHTML += `<h1>${element.name.text}</h1> `;
+		array.forEach(item => {
+			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item);
 		});
 	}
 };
