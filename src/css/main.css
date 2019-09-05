@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
 	box-sizing: border-box;
 }
@@ -76,3 +77,11 @@ main {
 .searchBtn {
 	margin: 0.3em;
 }
+=======
+.button {
+    border: none;
+    background: none;
+    font-size: 20px;
+    line-height: 2em;
+}
+>>>>>>> master

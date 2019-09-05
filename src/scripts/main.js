@@ -4,7 +4,7 @@ const WEB = {
 	tmSearchResults: dataObj => {
 		return `
         <section>
-        <h1><input type="radio"  name="concert" value="${dataObj.name}">${dataObj.name}</h1>
+        <button class="button" value="${dataObj.name}" onclick="saveConcert(this)">${dataObj.name}</button>
         </section>
         `;
 	},
@@ -12,22 +12,22 @@ const WEB = {
 	createHTML: dataObj => {
 		let parkData = `
         <section>
-        <h1><input type="radio"  name="park" value="${dataObj.park_name}">${dataObj.park_name}</h1>
+        <button class="button" value="${dataObj.park_name}" onclick="savePark(this)">${dataObj.park_name}</h1>
         </section>`;
 		return parkData;
 	},
 	
-	ebResultsHTML: arrayItem => {
+	ebResultsHTML: item => {
 		return `
-        <section>
-        <h1><input type="radio"  name="meetup" value="${arrayItem.name.text}">${arrayItem.name.text}</h1>
-        </section>
-        `;
+		<section>
+		<button class="button" value="${item.name.text}" onclick="saveEvent(this)">${item.name.text}</button>
+		</section>
+		`;
 	},
 	restaurantHTML: arrayItem => {
 		return `
         <section>
-        <h1><input type="radio"  name="restaurant" value="${arrayItem.restaurant.name}">${arrayItem.restaurant.name}</h1>
+        <button class="button" value="${arrayItem.restaurant.name}" onclick="saveRestaurant(this)">${arrayItem.restaurant.name}</h1>
         </section>
         `;
 	},
@@ -35,10 +35,11 @@ const WEB = {
 	createItinerary: () => {
 		return `
 		<div>
-		<h1>${itinerary.parkName}</h1>
-		<h1>${itinerary.concert}</h1>
-		<h1>${itinerary.meetups}</h1>
-		<h1>${itinerary.restaurant}</h1>
+		
+		<h1>Park: ${itinerary.parkName}</h1>
+		<h1>Concert: ${itinerary.concert}</h1>
+		<h1>Meetup: ${itinerary.meetups}</h1>
+		<h1>Restaurant: ${itinerary.restaurant}</h1>
 		</div>` 
 	}
 	
@@ -47,9 +48,9 @@ const WEB = {
 //API station
 
 const API = {
-	tmArray: searchTerm => {
+	tmArray: tacos => {
 		return fetch(
-			`https://app.ticketmaster.com/discovery/v2/events/?keyword=${searchTerm}&city=nashville&apikey=lRJ3piseoa0cn3eSi7wBxk5W9Th0WQc3`
+			`https://app.ticketmaster.com/discovery/v2/events/?keyword=${tacos}&city=nashville&apikey=lRJ3piseoa0cn3eSi7wBxk5W9Th0WQc3`
 		)
 			.then(events => events.json())
 			.then(object => {
@@ -115,7 +116,6 @@ const DOM = {
 			searchResultsContainer.innerHTML += WEB.createHTML(item);
 		});
 	},
-
 	ebResults: array => {
 		searchResultsContainer.innerHTML = "";
 		array.forEach(item => {
@@ -174,29 +174,46 @@ const itinerary = {
 
   }
 
-  	document.getElementById("save").addEventListener('click', (event) => {
-		let selectedPark = document.querySelector('input[name="park"]:checked').value
+  function savePark(clickedPark) {
+		let selectedPark = clickedPark.value
 		itinerary.parkName = selectedPark
    	    console.log(selectedPark)
     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-})
+}
 
-	document.getElementById("save").addEventListener('click', (event) => {
-		let selectedConcert = document.querySelector('input[name="concert"]:checked').value
+function saveConcert(clickedConcert) {
+		let selectedConcert = clickedConcert.value
 		itinerary.concert = selectedConcert
     	console.log(selectedConcert)
    		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-})
+}
 
-	document.getElementById("save").addEventListener('click', (event) => {
-		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
-		itinerary.meetups = selectedMeepups
-    	console.log(selectedMeepups)
-    	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-})
-	document.getElementById("save").addEventListener('click', (event) => {
-		let selectedRestaurant = document.querySelector('input[name="restaurant"]:checked').value
+// 	document.getElementById("save").addEventListener('click', (event) => {
+// 		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
+// 		itinerary.meetups = selectedMeepups
+//     	console.log(selectedMeepups)
+//     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// })
+
+
+
+// function saveEvent(clickedEvent) {
+// 		itinerary.meetups = clickedEvent.value.text
+//     	console.log(clickedEvent.value.text)
+//     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+//   }
+
+  function saveEvent(clickedEvent) {
+	let selectedMeepups = clickedEvent.value
+	itinerary.meetups = selectedMeepups
+	console.log(selectedMeepups)
+	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+}
+
+
+function saveRestaurant(clickedRestaurant) {
+		let selectedRestaurant = clickedRestaurant.value
 		itinerary.restaurant = selectedRestaurant
 		console.log(selectedRestaurant)
 		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-})
+}
