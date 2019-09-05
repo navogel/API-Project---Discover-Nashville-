@@ -16,22 +16,33 @@ main {
 }
 
 .leftContainer {
-	border: 1px solid red;
-	height: 90vh;
+	display: flex;
+	flex-direction: column;
 	width: 500px;
 }
 
 .rightContainer {
-	border: 1px solid red;
-	height: 90vh;
+	/* border: 1px solid red; */
+	/* height: 90vh; */
 	width: 500px;
+	/* overflow: hidden; */
+	/* display: none; */
 }
 
 #itinerary-container {
 	border: 1px solid red;
-
 	margin: 2em;
 	padding: 2em;
+	height: 55vh;
+	/* display: none; */
+}
+
+.searchResults {
+	margin: 2em;
+	padding: 2em;
+	border: 1px solid red;
+	/* overflow: scroll; */
+	height: 87vh;
 }
 
 #search-results-container {
@@ -39,10 +50,8 @@ main {
 	height: 100%;
 }
 
-.searchResults {
-	margin: 2em;
-	padding: 2em;
-	border: 1px solid red;
+#search-results-container::-webkit-scrollbar {
+	width: 0 !important;
 }
 
 #searchContainer {
