@@ -29,9 +29,9 @@ const WEB = {
 //API station
 
 const API = {
-	tmArray: searchTerm => {
+	tmArray: tacos => {
 		return fetch(
-			`https://app.ticketmaster.com/discovery/v2/events/?keyword=${searchTerm}&city=nashville&apikey=lRJ3piseoa0cn3eSi7wBxk5W9Th0WQc3`
+			`https://app.ticketmaster.com/discovery/v2/events/?keyword=${tacos}&city=nashville&apikey=lRJ3piseoa0cn3eSi7wBxk5W9Th0WQc3`
 		)
 			.then(events => events.json())
 			.then(object => {
@@ -85,11 +85,17 @@ const DOM = {
 			searchResultsContainer.innerHTML += WEB.createHTML(item);
 		});
 	},
-
 	ebResults: array => {
 		searchResultsContainer.innerHTML = "";
+		var i = 0
 		array.forEach(item => {
-			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item);
+			i++
+			searchResultsContainer.innerHTML += `
+			<section>
+			<h1>${i}</h1>
+			<h1>${item.name.text}</h1>
+			</section>
+			`
 		});
 	}
 };
