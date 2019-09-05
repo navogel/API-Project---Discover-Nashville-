@@ -24,12 +24,21 @@ const WEB = {
         </section>
         `;
 	},
+	restaurantHTML: arrayItem => {
+		return `
+        <section>
+        <h1><input type="radio"  name="restaurant" value="${arrayItem.restaurant.name}">${arrayItem.restaurant.name}</h1>
+        </section>
+        `;
+	},
+
 	createItinerary: () => {
 		return `
 		<div>
 		<h1>${itinerary.parkName}</h1>
 		<h1>${itinerary.concert}</h1>
 		<h1>${itinerary.meetups}</h1>
+		<h1>${itinerary.restaurant}</h1>
 		</div>` 
 	}
 	
@@ -48,6 +57,7 @@ const API = {
 				return object._embedded.events;
 			});
 	},
+	
 	parkList: searchTerm => {
 		return fetch(
 			`https://data.nashville.gov/resource/74d7-b74t.json?$q=${searchTerm}`
@@ -73,7 +83,18 @@ const API = {
 				console.table(parsedObject);
 				return parsedObject.events;
 			});
-	}
+	},
+	restaurantList: searchTerm =>{
+		return fetch(
+			`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchTerm}&apikey=6e72e09f0a9e5501ab2d5645e8fac52d`
+		)
+			.then(result => result.json())
+			.then(parsedResult => {
+				console.log(parsedResult.restaurants);
+				return parsedResult.restaurants
+				
+			}); 
+	},
 };
 
 //DOM station
@@ -100,8 +121,16 @@ const DOM = {
 		array.forEach(item => {
 			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item);
 		});
-	}
-};
+	},
+	restaurantResults: array => {
+
+		searchResultsContainer.innerHTML = "",
+		array.forEach(item => {
+			searchResultsContainer.innerHTML += WEB.restaurantHTML(item);
+		}
+		)
+},
+}
 
 //call eventbrite
 
@@ -116,48 +145,33 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 	});
-});
+}),
 
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	API.tmArray(searchTerm).then(data => DOM.tmResults(data));
-});
+}),
 
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
 	});
-});
+}),
+document.querySelector("#search-restaurants").addEventListener("click", event => {
+	let searchTerm = document.querySelector("#search-bar").value;
+	API.restaurantList(searchTerm).then(data => {DOM.restaurantResults(data)});
+}) 
 
-//zomato
 
-function lookUp(searchTerm) {
-	fetch(
-		`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchTerm}&apikey=6e72e09f0a9e5501ab2d5645e8fac52d`
-	)
-		.then(result => result.json())
-		.then(parsedResult => {
-			console.log(parsedResult.restaurants);
-			parsedResult.restaurants.forEach(element => {
-				document.querySelector(
-					"#restuarantResultsContainer"
-				).innerHTML += `<h1>${element.restaurant.name}</h1>`;
-			});
-		});
-}
 
-document
-	.querySelector("#search-restaurants")
-	.addEventListener("click", event => {
-		let searchTerm = document.querySelector("#search-bar").value;
-		lookUp(searchTerm);
-	});
 
-	const itinerary = {
+const itinerary = {
 		parkName: "",
 		concert: "",
-		meetups: ""  
+		meetups: "",
+		restaurant: ""
+
   }
 
   	document.getElementById("save").addEventListener('click', (event) => {
@@ -179,4 +193,10 @@ document
 		itinerary.meetups = selectedMeepups
     	console.log(selectedMeepups)
     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+})
+	document.getElementById("save").addEventListener('click', (event) => {
+		let selectedRestaurant = document.querySelector('input[name="restaurant"]:checked').value
+		itinerary.restaurant = selectedRestaurant
+		console.log(selectedRestaurant)
+		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 })
