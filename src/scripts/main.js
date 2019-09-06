@@ -4,37 +4,43 @@ const meetupArray = [];
 const concertArray = [];
 const parkArray = [];
 const restaurantArray = [];
+const itinObj = {
+	park: {},
+	restaurant: {},
+	meetup: {},
+	concert: {}
+};
 
 // web Component station
 
 const WEB = {
 	tmSearchResults: (item, i) => {
 		return `
-        <section>
-        <button name="concert" class="button" id="${i}" onclick="saveButton(this)">${item.name}</button>
+        <section >
+        <button id="${i}" name="concertArray" class="button">${item.name}</button>
         </section>
         `;
 	},
 
 	createHTML: (item, i) => {
 		let parkData = `
-        <section>
-        <button name="park" class="button" id="${i}" onclick="saveButton(this)">${item.park_name}</h1>
+        <section >
+        <button id="${i}" name="parkArray" class="button">${item.park_name}</h1>
         </section>`;
 		return parkData;
 	},
 
 	ebResultsHTML: (item, i) => {
 		return `
-		<section>
-		<button name="meetup" class="button" id="${i}" onclick="saveButton(this)">${item.name.text}</button>
+		<section >
+		<button id="${i}" name="meetupArray" class="button">${item.name.text}</button>
 		</section>
 		`;
 	},
 	restaurantHTML: (item, i) => {
 		return `
-        <section>
-        <button name="restaurant" class="button" id="${i}" onclick="saveButton(this)">${item.restaurant.name}</h1>
+        <section >
+        <button  id="${i}" name="restaurantArray" class="button">${item.restaurant.name}</button>
         </section>
         `;
 	},
@@ -55,6 +61,43 @@ const WEB = {
 		<div class="i1-restaurant">
 			<p class="iText">${itinerary.restaurant}</p>
 		</div>
+		`;
+	},
+
+	createConcertItinerary: object => {
+		return `
+			
+		<div class="i1-concert">
+			<p class="iText">${object.name}</p>
+		</div>
+		
+		`;
+	},
+	createParkItinerary: object => {
+		return `
+			
+		<div class="i1-park">
+			<p class="iText">${object.name}</p>
+		</div>
+		
+		`;
+	},
+	createMeetupItinerary: object => {
+		return `
+			
+		<div class="i1-meetup">
+			<p class="iText">${object.name}</p>
+		</div>
+		
+		`;
+	},
+	createRestaurantItinerary: object => {
+		return `
+			
+		<div class="i1-restaurant">
+			<p class="iText">${object.name}</p>
+		</div>
+		
 		`;
 	}
 };
@@ -203,26 +246,43 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 			});
 		});
 
-const itinerary = {
-	park: "",
-	concert: "",
-	meetup: "",
-	restaurant: ""
-};
-
-const saveButton = button => {
-	itinerary[button.name] = button.value;
-	document.querySelector(
-		"#itinerary-container"
-	).innerHTML = WEB.createItinerary();
-};
+// const saveButton = button => {
+// 	itinerary[button.name] = button.value;
+// 	document.querySelector(
+// 		"#itinerary-container"
+// 	).innerHTML = WEB.createItinerary();
+// };
 
 document
 	.querySelector("#search-results-container")
 	.addEventListener("click", event => {
-		let itemID = event.target.id;
-		let arrayID = event.target.name;
-		let arrayObj = someArray[itemID];
+		let i = event.target.id;
+		if (event.target.name.startsWith("concert")) {
+			itinObj.concert = concertArray[i];
+			console.log(itinObj.concert);
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
+			console.log(itinObj);
+		} else if (event.target.name.startsWith("restaurant")) {
+			itinObj.restaurant = restaurantArray[i].restaurant;
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
+			console.log(itinObj);
+		} else if (event.target.name.startsWith("park")) {
+			itinObj.park = parkArray[i];
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createParkItinerary(itinObj.park);
+			console.log(itinObj);
+		} else if (event.target.name.startsWith("meetup")) {
+			itinObj.meetup = meetupArray[i];
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createMeetupItinerary(itinObj.meetup);
+			console.log(itinObj);
+		}
 	});
 
 //   function savePark(clickedPark) {
