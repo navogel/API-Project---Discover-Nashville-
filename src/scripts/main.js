@@ -45,24 +45,23 @@ const WEB = {
         `;
 	},
 
-	createItinerary: () => {
-		return `
-		
-		
-		<div class="i1-park">
-			<p class="iText">${itinerary.park}</p>
-		</div>
-		<div class="i1-concert">
-			<p class="iText">${itinerary.concert}</p>
-		</div>
-		<div class="i1-meetup">
-			<p class="iText">${itinerary.meetup}</p>
-		</div>
-		<div class="i1-restaurant">
-			<p class="iText">${itinerary.restaurant}</p>
-		</div>
-		`;
-	},
+	// createItinerary: () => {
+	// 	return `
+
+	// 	<div class="i1-park">
+	// 		<p class="iText">${itinerary.park}</p>
+	// 	</div>
+	// 	<div class="i1-concert">
+	// 		<p class="iText">${itinerary.concert}</p>
+	// 	</div>
+	// 	<div class="i1-meetup">
+	// 		<p class="iText">${itinerary.meetup}</p>
+	// 	</div>
+	// 	<div class="i1-restaurant">
+	// 		<p class="iText">${itinerary.restaurant}</p>
+	// 	</div>
+	// 	`;
+	// },
 
 	createConcertItinerary: object => {
 		return `
