@@ -10,7 +10,7 @@ h1 {
 }
 
 h3 {
-	font-family: "Abril Fatface", cursive;
+	font-family: "Special Elite", cursive;
 	letter-spacing: 3px;
 	font-size: 1.2em;
 	margin: 0.3em 0em 0em 0em;
@@ -66,46 +66,52 @@ main {
 	flex-wrap: wrap;
 }
 
-.i1,
-.i2,
-.i3,
-.i4 {
+.i1-park,
+.i1-restaurant,
+.i1-meetup,
+.i1-concert {
 	height: 24vh;
 	width: 29vh;
-	background-color: rgb(255, 255, 255);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	padding: 0.4em;
 	margin: 0.4em;
-	vertical-align: center;
+	/* vertical-align: center; */
 	position: relative;
-	padding: 4em 0.2em;
+	/* padding: 4em 0.2em; */
 	border-radius: 5px;
 	border: 2px solid rgb(255, 217, 217);
 }
 
-.i1 {
+.i1-park {
 	background-image: url("/src/images/park.jpg");
 	background-size: cover;
+	/* display: hidden; */
 }
 
-.i2 {
+.i1-concert {
 	background-image: url("/src/images/concert.jpg");
 	background-size: cover;
+	/* display: hidden; */
 }
 
-.i3 {
+.i1-meetup {
 	background-image: url("/src/images/meetup.jpg");
 	background-size: cover;
+	/* display: hidden; */
 }
 
-.i4 {
+.i1-restaurant {
 	background-image: url("/src/images/restaurant.jpg");
 	background-size: cover;
+	/* display: hidden; */
 }
 
 .iText {
 	background: rgba(255, 255, 255, 0.973);
-	padding: 0.3em;
-	padding-top: 0.3em;
+	/* padding: 0.3em; */
+	/* padding-top: 0.3em; */
 	margin: 0.2em 0.1em;
 }
 

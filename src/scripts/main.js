@@ -1,33 +1,40 @@
+//declare array variables
+
+const meetupArray = [];
+const concertArray = [];
+const parkArray = [];
+const restaurantArray = [];
+
 // web Component station
 
 const WEB = {
-	tmSearchResults: dataObj => {
+	tmSearchResults: (item, i) => {
 		return `
         <section>
-        <button name="concert" class="button" value="${dataObj.name}" onclick="saveButton(this)">${dataObj.name}</button>
+        <button name="concert" class="button" id="${i}" onclick="saveButton(this)">${item.name}</button>
         </section>
         `;
 	},
 
-	createHTML: dataObj => {
+	createHTML: (item, i) => {
 		let parkData = `
         <section>
-        <button name="park" class="button" value="${dataObj.park_name}" onclick="saveButton(this)">${dataObj.park_name}</h1>
+        <button name="park" class="button" id="${i}" onclick="saveButton(this)">${item.park_name}</h1>
         </section>`;
 		return parkData;
 	},
 
-	ebResultsHTML: item => {
+	ebResultsHTML: (item, i) => {
 		return `
 		<section>
-		<button name="meetup" class="button" value="${item.name.text}" onclick="saveButton(this)">${item.name.text}</button>
+		<button name="meetup" class="button" id="${i}" onclick="saveButton(this)">${item.name.text}</button>
 		</section>
 		`;
 	},
-	restaurantHTML: arrayItem => {
+	restaurantHTML: (item, i) => {
 		return `
         <section>
-        <button name="restaurant" class="button" value="${arrayItem.restaurant.name}" onclick="saveButton(this)">${arrayItem.restaurant.name}</h1>
+        <button name="restaurant" class="button" id="${i}" onclick="saveButton(this)">${item.restaurant.name}</h1>
         </section>
         `;
 	},
@@ -36,10 +43,18 @@ const WEB = {
 		return `
 		
 		
-		<p class="i1"><span class="iText">${itinerary.park}</span></p>
-		<p class="i2"><span class="iText">${itinerary.concert}</span></p>
-		<p class="i3"><span class="iText">${itinerary.meetup}</span></p>
-		<p class="i4"><span class="iText">${itinerary.restaurant}</span></p>
+		<div class="i1-park">
+			<p class="iText">${itinerary.park}</p>
+		</div>
+		<div class="i1-concert">
+			<p class="iText">${itinerary.concert}</p>
+		</div>
+		<div class="i1-meetup">
+			<p class="iText">${itinerary.meetup}</p>
+		</div>
+		<div class="i1-restaurant">
+			<p class="iText">${itinerary.restaurant}</p>
+		</div>
 		`;
 	}
 };
@@ -103,36 +118,49 @@ const searchResultsContainer = document.querySelector(
 
 const DOM = {
 	tmResults: array => {
+		let i = -1;
+		concertArray.length = 0;
 		searchResultsContainer.innerHTML = "";
-		array.forEach(element => {
-			searchResultsContainer.innerHTML += WEB.tmSearchResults(element);
+		array.forEach(item => {
+			i++;
+			concertArray[i] = item;
+			searchResultsContainer.innerHTML += WEB.tmSearchResults(item, i);
 		});
 	},
 	parkResult: data => {
+		let i = -1;
+		parkArray.length = 0;
 		searchResultsContainer.innerHTML = "";
 		data.forEach(item => {
-			searchResultsContainer.innerHTML += WEB.createHTML(item);
+			i++;
+			parkArray[i] = item;
+			searchResultsContainer.innerHTML += WEB.createHTML(item, i);
 		});
 	},
 	ebResults: array => {
+		let i = -1;
+		meetupArray.length = 0;
 		searchResultsContainer.innerHTML = "";
 		array.forEach(item => {
-			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item);
+			i++;
+			meetupArray[i] = item;
+			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item, i);
+			// console.log(i);
 		});
 	},
 	restaurantResults: array => {
+		let i = -1;
+		restaurantArray.length = 0;
 		(searchResultsContainer.innerHTML = ""),
 			array.forEach(item => {
-				searchResultsContainer.innerHTML += WEB.restaurantHTML(item);
+				i++;
+				restaurantArray[i] = item;
+				searchResultsContainer.innerHTML += WEB.restaurantHTML(item, i);
 			});
 	}
 };
 
-//call eventbrite
-
-//call ticketmaster
-
-//call parks
+//array variables
 
 //add event listeners to buttons
 
@@ -188,6 +216,14 @@ const saveButton = button => {
 		"#itinerary-container"
 	).innerHTML = WEB.createItinerary();
 };
+
+document
+	.querySelector("#search-results-container")
+	.addEventListener("click", event => {
+		let itemID = event.target.id;
+		let arrayID = event.target.name;
+		let arrayObj = someArray[itemID];
+	});
 
 //   function savePark(clickedPark) {
 // 		let selectedPark = clickedPark.value
