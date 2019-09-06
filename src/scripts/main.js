@@ -4,12 +4,12 @@ const meetupArray = [];
 const concertArray = [];
 const parkArray = [];
 const restaurantArray = [];
-const itinObj = {
-	park: {},
-	restaurant: {},
-	meetup: {},
-	concert: {}
-};
+// const itinObj = {
+// 	park: {},
+// 	restaurant: {},
+// 	meetup: {},
+// 	concert: {}
+// };
 
 // web Component station
 
@@ -68,7 +68,7 @@ const WEB = {
 		return `
 			
 		<div class="i1-concert">
-			<p class="iText">${object.type}</p>
+			<p class="iText">${object.name}</p>
 		</div>
 		
 		`;
@@ -76,8 +76,8 @@ const WEB = {
 	createParkItinerary: object => {
 		return `
 			
-		<div class="i1-concert">
-			<p class="iText">${object.type}</p>
+		<div class="i1-park">
+			<p class="iText">${object.name}</p>
 		</div>
 		
 		`;
@@ -85,8 +85,8 @@ const WEB = {
 	createMeetupItinerary: object => {
 		return `
 			
-		<div class="i1-concert">
-			<p class="iText">${object.type}</p>
+		<div class="i1-meetup">
+			<p class="iText">${object.name}</p>
 		</div>
 		
 		`;
@@ -94,8 +94,8 @@ const WEB = {
 	createRestaurantItinerary: object => {
 		return `
 			
-		<div class="i1-concert">
-			<p class="iText">${object.type}</p>
+		<div class="i1-restaurant">
+			<p class="iText">${object.name}</p>
 		</div>
 		
 		`;
@@ -253,33 +253,68 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 // 	).innerHTML = WEB.createItinerary();
 // };
 
+allArrays = {
+	meetup: ["yes", "no"],
+	concert: [],
+	park: [],
+	restaurant: []
+};
+
+const itinObj = {
+	park: {},
+	concert: {},
+	meetup: {},
+	restaurant: {}
+};
+
 document
 	.querySelector("#search-results-container")
-	.addEventListener("click", event => {
-		let i = event.target.id;
-		if (event.target.name.startsWith("concert")) {
-			itinObj.concert = concertArray[i];
-			console.log(itinObj.concert);
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
-		} else if (event.target.name.startsWith("restaurant")) {
-			itinObj.restaurant = restaurantArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
-		} else if (event.target.name.startsWith("park")) {
-			itinObj.park = parkArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createRestaurantItinerary(itinObj.park);
-		} else if (event.target.name.startsWith("meetup")) {
-			itinObj.meetup = meetupArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createRestaurantItinerary(itinObj.meetup);
-		}
+	.addEventListener("click", taco => {
+		// console.log(taco.target.name);
+		// console.log(taco.target.id);
+		var targetID = taco.target.id;
+		// selectedArray = allArrays[taco.target.name]
+		selectedElement = allArrays[taco.target.name][targetID];
+		itinObj[taco.target.name] = selectedElement;
+		console.log(initObj);
+		// console.log(taco);
+
+		// let itemID = event.target.id;
+		// let arrayID = event.target.name;
+		// let arrayObj = someArray[itemID];
 	});
+
+// document
+// 	.querySelector("#search-results-container")
+// 	.addEventListener("click", event => {
+// 		let i = event.target.id;
+// 		if (event.target.name.startsWith("concert")) {
+// 			itinObj.concert = concertArray[i];
+// 			console.log(itinObj.concert);
+// 			document.querySelector(
+// 				"#itinerary-container"
+// 			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
+// 			console.log(itinObj);
+// 		} else if (event.target.name.startsWith("restaurant")) {
+// 			itinObj.restaurant = restaurantArray[i].restaurant;
+// 			document.querySelector(
+// 				"#itinerary-container"
+// 			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
+// 			console.log(itinObj);
+// 		} else if (event.target.name.startsWith("park")) {
+// 			itinObj.park = parkArray[i];
+// 			document.querySelector(
+// 				"#itinerary-container"
+// 			).innerHTML = WEB.createRestaurantItinerary(itinObj.park);
+// 			console.log(itinObj);
+// 		} else if (event.target.name.startsWith("meetup")) {
+// 			itinObj.meetup = meetupArray[i];
+// 			document.querySelector(
+// 				"#itinerary-container"
+// 			).innerHTML = WEB.createRestaurantItinerary(itinObj.meetup);
+// 			console.log(itinObj);
+// 		}
+// 	});
 
 //   function savePark(clickedPark) {
 // 		let selectedPark = clickedPark.value
