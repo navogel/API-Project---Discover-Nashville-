@@ -35,20 +35,12 @@ const WEB = {
 	createItinerary: () => {
 		return `
 		
-<<<<<<< HEAD
 		
-		<p class="i1"><span class="iText">${itinerary.parkName}</span></p>
+		<p class="i1"><span class="iText">${itinerary.park}</span></p>
 		<p class="i2"><span class="iText">${itinerary.concert}</span></p>
-		<p class="i3"><span class="iText">${itinerary.meetups}</span></p>
+		<p class="i3"><span class="iText">${itinerary.meetup}</span></p>
 		<p class="i4"><span class="iText">${itinerary.restaurant}</span></p>
 		`;
-=======
-		<h1>Park: ${itinerary.park}</h1>
-		<h1>Concert: ${itinerary.concert}</h1>
-		<h1>Meetup: ${itinerary.meetup}</h1>
-		<h1>Restaurant: ${itinerary.restaurant}</h1>
-		</div>` 
->>>>>>> master
 	}
 };
 
@@ -184,42 +176,18 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 		});
 
 const itinerary = {
-<<<<<<< HEAD
-	parkName: "",
+	park: "",
 	concert: "",
-	meetups: "",
+	meetup: "",
 	restaurant: ""
 };
 
-function savePark(clickedPark) {
-	let selectedPark = clickedPark.value;
-	itinerary.parkName = selectedPark;
-	console.log(selectedPark);
+const saveButton = button => {
+	itinerary[button.name] = button.value;
 	document.querySelector(
 		"#itinerary-container"
 	).innerHTML = WEB.createItinerary();
-}
-
-function saveConcert(clickedConcert) {
-	let selectedConcert = clickedConcert.value;
-	itinerary.concert = selectedConcert;
-	console.log(selectedConcert);
-	document.querySelector(
-		"#itinerary-container"
-	).innerHTML = WEB.createItinerary();
-}
-=======
-		park: "",
-		concert: "",
-		meetup: "",
-		restaurant: ""
-
-  }
-
- const saveButton = (button) => {
-	itinerary[button.name] = button.value
-	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-}
+};
 
 //   function savePark(clickedPark) {
 // 		let selectedPark = clickedPark.value
@@ -234,7 +202,6 @@ function saveConcert(clickedConcert) {
 //     	console.log(selectedConcert)
 //    		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 // }
->>>>>>> master
 
 // 	document.getElementById("save").addEventListener('click', (event) => {
 // 		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
@@ -249,29 +216,9 @@ function saveConcert(clickedConcert) {
 //     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 //   }
 
-<<<<<<< HEAD
-function saveEvent(clickedEvent) {
-	let selectedMeepups = clickedEvent.value;
-	itinerary.meetups = selectedMeepups;
-	console.log(selectedMeepups);
-	document.querySelector(
-		"#itinerary-container"
-	).innerHTML = WEB.createItinerary();
-}
-
-function saveRestaurant(clickedRestaurant) {
-	let selectedRestaurant = clickedRestaurant.value;
-	itinerary.restaurant = selectedRestaurant;
-	console.log(selectedRestaurant);
-	document.querySelector(
-		"#itinerary-container"
-	).innerHTML = WEB.createItinerary();
-}
-=======
 //   function saveEvent(clickedEvent) {
 // 	let selectedMeepups = clickedEvent.value
 // 	itinerary.meetups = selectedMeepups
 // 	console.log(selectedMeepups)
 // 	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 // }
->>>>>>> master
