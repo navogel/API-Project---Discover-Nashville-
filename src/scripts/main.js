@@ -4,7 +4,7 @@ const WEB = {
 	tmSearchResults: dataObj => {
 		return `
         <section>
-        <button class="button" value="${dataObj.name}" onclick="saveConcert(this)">${dataObj.name}</button>
+        <button name="concert" class="button" value="${dataObj.name}" onclick="saveButton(this)">${dataObj.name}</button>
         </section>
         `;
 	},
@@ -12,7 +12,7 @@ const WEB = {
 	createHTML: dataObj => {
 		let parkData = `
         <section>
-        <button class="button" value="${dataObj.park_name}" onclick="savePark(this)">${dataObj.park_name}</h1>
+        <button name="park" class="button" value="${dataObj.park_name}" onclick="saveButton(this)">${dataObj.park_name}</h1>
         </section>`;
 		return parkData;
 	},
@@ -20,14 +20,14 @@ const WEB = {
 	ebResultsHTML: item => {
 		return `
 		<section>
-		<button class="button" value="${item.name.text}" onclick="saveEvent(this)">${item.name.text}</button>
+		<button name="meetup" class="button" value="${item.name.text}" onclick="saveButton(this)">${item.name.text}</button>
 		</section>
 		`;
 	},
 	restaurantHTML: arrayItem => {
 		return `
         <section>
-        <button class="button" value="${arrayItem.restaurant.name}" onclick="saveRestaurant(this)">${arrayItem.restaurant.name}</h1>
+        <button name="restaurant" class="button" value="${arrayItem.restaurant.name}" onclick="saveButton(this)">${arrayItem.restaurant.name}</h1>
         </section>
         `;
 	},
@@ -35,12 +35,20 @@ const WEB = {
 	createItinerary: () => {
 		return `
 		
+<<<<<<< HEAD
 		
 		<p class="i1"><span class="iText">${itinerary.parkName}</span></p>
 		<p class="i2"><span class="iText">${itinerary.concert}</span></p>
 		<p class="i3"><span class="iText">${itinerary.meetups}</span></p>
 		<p class="i4"><span class="iText">${itinerary.restaurant}</span></p>
 		`;
+=======
+		<h1>Park: ${itinerary.park}</h1>
+		<h1>Concert: ${itinerary.concert}</h1>
+		<h1>Meetup: ${itinerary.meetup}</h1>
+		<h1>Restaurant: ${itinerary.restaurant}</h1>
+		</div>` 
+>>>>>>> master
 	}
 };
 
@@ -176,6 +184,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 		});
 
 const itinerary = {
+<<<<<<< HEAD
 	parkName: "",
 	concert: "",
 	meetups: "",
@@ -199,6 +208,33 @@ function saveConcert(clickedConcert) {
 		"#itinerary-container"
 	).innerHTML = WEB.createItinerary();
 }
+=======
+		park: "",
+		concert: "",
+		meetup: "",
+		restaurant: ""
+
+  }
+
+ const saveButton = (button) => {
+	itinerary[button.name] = button.value
+	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+}
+
+//   function savePark(clickedPark) {
+// 		let selectedPark = clickedPark.value
+// 		itinerary.parkName = selectedPark
+//    	    console.log(selectedPark)
+//     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
+
+// function saveConcert(clickedConcert) {
+// 		let selectedConcert = clickedConcert.value
+// 		itinerary.concert = selectedConcert
+//     	console.log(selectedConcert)
+//    		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
+>>>>>>> master
 
 // 	document.getElementById("save").addEventListener('click', (event) => {
 // 		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
@@ -213,6 +249,7 @@ function saveConcert(clickedConcert) {
 //     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 //   }
 
+<<<<<<< HEAD
 function saveEvent(clickedEvent) {
 	let selectedMeepups = clickedEvent.value;
 	itinerary.meetups = selectedMeepups;
@@ -230,3 +267,11 @@ function saveRestaurant(clickedRestaurant) {
 		"#itinerary-container"
 	).innerHTML = WEB.createItinerary();
 }
+=======
+//   function saveEvent(clickedEvent) {
+// 	let selectedMeepups = clickedEvent.value
+// 	itinerary.meetups = selectedMeepups
+// 	console.log(selectedMeepups)
+// 	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
+>>>>>>> master
