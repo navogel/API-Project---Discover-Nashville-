@@ -139,7 +139,7 @@ const DOM = {
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	document.querySelector(".rightContainer").style.display = "block";
-
+	document.querySelector(".itineraryWrapper").style.display = "block";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
@@ -150,14 +150,14 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 		.addEventListener("click", event => {
 			let searchTerm = document.querySelector("#search-bar").value;
 			document.querySelector(".rightContainer").style.display = "block";
-
+			document.querySelector(".itineraryWrapper").style.display = "block";
 			document.querySelector("#searchContainer").style.marginTop = "1em";
 			API.tmArray(searchTerm).then(data => DOM.tmResults(data));
 		}),
 	document.querySelector("#search-meetups").addEventListener("click", event => {
 		let searchTerm = document.querySelector("#search-bar").value;
 		document.querySelector(".rightContainer").style.display = "block";
-
+		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
 		API.eventbrite(searchTerm).then(data => {
 			DOM.ebResults(data);
@@ -168,7 +168,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 		.addEventListener("click", event => {
 			let searchTerm = document.querySelector("#search-bar").value;
 			document.querySelector(".rightContainer").style.display = "block";
-
+			document.querySelector(".itineraryWrapper").style.display = "block";
 			document.querySelector("#searchContainer").style.marginTop = "1em";
 			API.restaurantList(searchTerm).then(data => {
 				DOM.restaurantResults(data);
@@ -184,7 +184,6 @@ const itinerary = {
 
 function savePark(clickedPark) {
 	let selectedPark = clickedPark.value;
-	document.querySelector(".itineraryWrapper").style.display = "block";
 	itinerary.parkName = selectedPark;
 	console.log(selectedPark);
 	document.querySelector(
@@ -194,7 +193,6 @@ function savePark(clickedPark) {
 
 function saveConcert(clickedConcert) {
 	let selectedConcert = clickedConcert.value;
-	document.querySelector(".itineraryWrapper").style.display = "block";
 	itinerary.concert = selectedConcert;
 	console.log(selectedConcert);
 	document.querySelector(
@@ -217,7 +215,6 @@ function saveConcert(clickedConcert) {
 
 function saveEvent(clickedEvent) {
 	let selectedMeepups = clickedEvent.value;
-	document.querySelector(".itineraryWrapper").style.display = "block";
 	itinerary.meetups = selectedMeepups;
 	console.log(selectedMeepups);
 	document.querySelector(
@@ -227,7 +224,6 @@ function saveEvent(clickedEvent) {
 
 function saveRestaurant(clickedRestaurant) {
 	let selectedRestaurant = clickedRestaurant.value;
-	document.querySelector(".itineraryWrapper").style.display = "block";
 	itinerary.restaurant = selectedRestaurant;
 	console.log(selectedRestaurant);
 	document.querySelector(
