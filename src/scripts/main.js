@@ -4,7 +4,7 @@ const WEB = {
 	tmSearchResults: dataObj => {
 		return `
         <section>
-        <button class="button" value="${dataObj.name}" onclick="saveConcert(this)">${dataObj.name}</button>
+        <button name="concert" class="button" value="${dataObj.name}" onclick="saveButton(this)">${dataObj.name}</button>
         </section>
         `;
 	},
@@ -12,7 +12,7 @@ const WEB = {
 	createHTML: dataObj => {
 		let parkData = `
         <section>
-        <button class="button" value="${dataObj.park_name}" onclick="savePark(this)">${dataObj.park_name}</h1>
+        <button name="park" class="button" value="${dataObj.park_name}" onclick="saveButton(this)">${dataObj.park_name}</h1>
         </section>`;
 		return parkData;
 	},
@@ -20,14 +20,14 @@ const WEB = {
 	ebResultsHTML: item => {
 		return `
 		<section>
-		<button class="button" value="${item.name.text}" onclick="saveEvent(this)">${item.name.text}</button>
+		<button name="meetup" class="button" value="${item.name.text}" onclick="saveButton(this)">${item.name.text}</button>
 		</section>
 		`;
 	},
 	restaurantHTML: arrayItem => {
 		return `
         <section>
-        <button class="button" value="${arrayItem.restaurant.name}" onclick="saveRestaurant(this)">${arrayItem.restaurant.name}</h1>
+        <button name="restaurant" class="button" value="${arrayItem.restaurant.name}" onclick="saveButton(this)">${arrayItem.restaurant.name}</h1>
         </section>
         `;
 	},
@@ -36,9 +36,9 @@ const WEB = {
 		return `
 		<div>
 		
-		<h1>Park: ${itinerary.parkName}</h1>
+		<h1>Park: ${itinerary.park}</h1>
 		<h1>Concert: ${itinerary.concert}</h1>
-		<h1>Meetup: ${itinerary.meetups}</h1>
+		<h1>Meetup: ${itinerary.meetup}</h1>
 		<h1>Restaurant: ${itinerary.restaurant}</h1>
 		</div>` 
 	}
@@ -167,26 +167,31 @@ document.querySelector("#search-restaurants").addEventListener("click", event =>
 
 
 const itinerary = {
-		parkName: "",
+		park: "",
 		concert: "",
-		meetups: "",
+		meetup: "",
 		restaurant: ""
 
   }
 
-  function savePark(clickedPark) {
-		let selectedPark = clickedPark.value
-		itinerary.parkName = selectedPark
-   	    console.log(selectedPark)
-    	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+ const saveButton = (button) => {
+	itinerary[button.name] = button.value
+	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 }
 
-function saveConcert(clickedConcert) {
-		let selectedConcert = clickedConcert.value
-		itinerary.concert = selectedConcert
-    	console.log(selectedConcert)
-   		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-}
+//   function savePark(clickedPark) {
+// 		let selectedPark = clickedPark.value
+// 		itinerary.parkName = selectedPark
+//    	    console.log(selectedPark)
+//     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
+
+// function saveConcert(clickedConcert) {
+// 		let selectedConcert = clickedConcert.value
+// 		itinerary.concert = selectedConcert
+//     	console.log(selectedConcert)
+//    		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
 
 // 	document.getElementById("save").addEventListener('click', (event) => {
 // 		let selectedMeepups = document.querySelector('input[name="meetup"]:checked').value
@@ -203,17 +208,9 @@ function saveConcert(clickedConcert) {
 //     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 //   }
 
-  function saveEvent(clickedEvent) {
-	let selectedMeepups = clickedEvent.value
-	itinerary.meetups = selectedMeepups
-	console.log(selectedMeepups)
-	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-}
-
-
-function saveRestaurant(clickedRestaurant) {
-		let selectedRestaurant = clickedRestaurant.value
-		itinerary.restaurant = selectedRestaurant
-		console.log(selectedRestaurant)
-		document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-}
+//   function saveEvent(clickedEvent) {
+// 	let selectedMeepups = clickedEvent.value
+// 	itinerary.meetups = selectedMeepups
+// 	console.log(selectedMeepups)
+// 	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
+// }
