@@ -72,6 +72,33 @@ const WEB = {
 		</div>
 		
 		`;
+	},
+	createParkItinerary: object => {
+		return `
+			
+		<div class="i1-concert">
+			<p class="iText">${object.type}</p>
+		</div>
+		
+		`;
+	},
+	createMeetupItinerary: object => {
+		return `
+			
+		<div class="i1-concert">
+			<p class="iText">${object.type}</p>
+		</div>
+		
+		`;
+	},
+	createRestaurantItinerary: object => {
+		return `
+			
+		<div class="i1-concert">
+			<p class="iText">${object.type}</p>
+		</div>
+		
+		`;
 	}
 };
 
@@ -238,6 +265,19 @@ document
 			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
 		} else if (event.target.name.startsWith("restaurant")) {
 			itinObj.restaurant = restaurantArray[i];
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
+		} else if (event.target.name.startsWith("park")) {
+			itinObj.park = parkArray[i];
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createRestaurantItinerary(itinObj.park);
+		} else if (event.target.name.startsWith("meetup")) {
+			itinObj.meetup = meetupArray[i];
+			document.querySelector(
+				"#itinerary-container"
+			).innerHTML = WEB.createRestaurantItinerary(itinObj.meetup);
 		}
 	});
 
