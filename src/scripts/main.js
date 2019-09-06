@@ -119,6 +119,7 @@ const searchResultsContainer = document.querySelector(
 const DOM = {
 	tmResults: array => {
 		let i = -1;
+		concertArray.length = 0;
 		searchResultsContainer.innerHTML = "";
 		array.forEach(item => {
 			i++;
@@ -128,6 +129,7 @@ const DOM = {
 	},
 	parkResult: data => {
 		let i = -1;
+		parkArray.length = 0;
 		searchResultsContainer.innerHTML = "";
 		data.forEach(item => {
 			i++;
@@ -216,7 +218,7 @@ const saveButton = button => {
 };
 
 document
-	.querySelector(".itinerary-container")
+	.querySelector("#search-results-container")
 	.addEventListener("click", event => {
 		let itemID = event.target.id;
 		let arrayID = event.target.name;
