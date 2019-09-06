@@ -1,11 +1,27 @@
 * {
 	box-sizing: border-box;
+	/* font-family: "Abril Fatface", cursive; */
+	font-family: "Special Elite", cursive;
+}
+h1 {
+	font-family: "Abril Fatface", cursive;
+	letter-spacing: 3px;
+	font-size: 1.5em !important;
+}
+
+h3 {
+	font-family: "Abril Fatface", cursive;
+	letter-spacing: 3px;
+	font-size: 1.2em;
+	margin: 0.3em 0em 0em 0em;
 }
 
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	background-image: url("../images/21.jpg");
+	background-size: cover;
 }
 
 main {
@@ -27,22 +43,81 @@ main {
 	width: 500px;
 	/* overflow: hidden; */
 	/* display: none; */
+	display: none;
+}
+
+.itineraryWrapper {
+	/* border: 1px solid red; */
+	margin: 1em;
+	padding-top: 0em;
+	height: 58vh;
+	/* display: none; */
+	background-color: #ffffffb3;
+	border-radius: 15px;
+	border: 3px solid #d3ece3;
+	text-align: center;
+	display: none;
 }
 
 #itinerary-container {
-	border: 1px solid red;
-	margin: 2em;
-	padding: 2em;
-	height: 55vh;
-	/* display: none; */
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.i1,
+.i2,
+.i3,
+.i4 {
+	height: 24vh;
+	width: 29vh;
+	background-color: rgb(255, 255, 255);
+	padding: 0.4em;
+	margin: 0.4em;
+	vertical-align: center;
+	position: relative;
+	padding: 4em 0.2em;
+	border-radius: 5px;
+	border: 2px solid rgb(255, 217, 217);
+}
+
+.i1 {
+	background-image: url("/src/images/park.jpg");
+	background-size: cover;
+}
+
+.i2 {
+	background-image: url("/src/images/concert.jpg");
+	background-size: cover;
+}
+
+.i3 {
+	background-image: url("/src/images/meetup.jpg");
+	background-size: cover;
+}
+
+.i4 {
+	background-image: url("/src/images/restaurant.jpg");
+	background-size: cover;
+}
+
+.iText {
+	background: rgba(255, 255, 255, 0.973);
+	padding: 0.3em;
+	padding-top: 0.3em;
+	margin: 0.2em 0.1em;
 }
 
 .searchResults {
-	margin: 2em;
-	padding: 2em;
-	border: 1px solid red;
+	margin: 1em;
+	padding: 1em;
+	/* border: 1px solid red; */
 	/* overflow: scroll; */
-	height: 87vh;
+	height: 93vh;
+	background-color: #ffffffb3;
+	border-radius: 15px;
+	border: 3px solid #d3ece3;
 }
 
 #search-results-container {
@@ -50,17 +125,33 @@ main {
 	height: 100%;
 }
 
+#search-results-container > section {
+	border-bottom: 1px dotted rgba(230, 171, 171, 0.945);
+	text-align: left;
+}
+
 #search-results-container::-webkit-scrollbar {
-	width: 0 !important;
+	width: 10px;
+	background-color: #f08e8e93;
+}
+#search-results-container::-webkit-scrollbar-thumb {
+	border-radius: 3px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #f08e8e;
 }
 
 #searchContainer {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	display: flex;
 	flex-direction: column;
-	margin: 2em;
-	padding: 2em;
+	margin: 1em;
+	margin-top: 40%;
+	padding: 1em;
 	justify-content: center;
+	background-color: #ffffffb3;
+	border-radius: 15px;
+	border: 3px solid #d3ece3;
+	text-align: center;
 }
 
 .textInput {

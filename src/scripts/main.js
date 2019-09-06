@@ -8,7 +8,7 @@ const WEB = {
         </section>
         `;
 	},
-	
+
 	createHTML: dataObj => {
 		let parkData = `
         <section>
@@ -16,7 +16,7 @@ const WEB = {
         </section>`;
 		return parkData;
 	},
-	
+
 	ebResultsHTML: item => {
 		return `
 		<section>
@@ -34,15 +34,14 @@ const WEB = {
 
 	createItinerary: () => {
 		return `
-		<div>
 		
-		<h1>Park: ${itinerary.park}</h1>
-		<h1>Concert: ${itinerary.concert}</h1>
-		<h1>Meetup: ${itinerary.meetup}</h1>
-		<h1>Restaurant: ${itinerary.restaurant}</h1>
-		</div>` 
+		
+		<p class="i1"><span class="iText">${itinerary.park}</span></p>
+		<p class="i2"><span class="iText">${itinerary.concert}</span></p>
+		<p class="i3"><span class="iText">${itinerary.meetup}</span></p>
+		<p class="i4"><span class="iText">${itinerary.restaurant}</span></p>
+		`;
 	}
-	
 };
 
 //API station
@@ -58,7 +57,7 @@ const API = {
 				return object._embedded.events;
 			});
 	},
-	
+
 	parkList: searchTerm => {
 		return fetch(
 			`https://data.nashville.gov/resource/74d7-b74t.json?$q=${searchTerm}`
@@ -85,17 +84,16 @@ const API = {
 				return parsedObject.events;
 			});
 	},
-	restaurantList: searchTerm =>{
+	restaurantList: searchTerm => {
 		return fetch(
 			`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${searchTerm}&apikey=6e72e09f0a9e5501ab2d5645e8fac52d`
 		)
 			.then(result => result.json())
 			.then(parsedResult => {
 				console.log(parsedResult.restaurants);
-				return parsedResult.restaurants
-				
-			}); 
-	},
+				return parsedResult.restaurants;
+			});
+	}
 };
 
 //DOM station
@@ -123,14 +121,12 @@ const DOM = {
 		});
 	},
 	restaurantResults: array => {
-
-		searchResultsContainer.innerHTML = "",
-		array.forEach(item => {
-			searchResultsContainer.innerHTML += WEB.restaurantHTML(item);
-		}
-		)
-},
-}
+		(searchResultsContainer.innerHTML = ""),
+			array.forEach(item => {
+				searchResultsContainer.innerHTML += WEB.restaurantHTML(item);
+			});
+	}
+};
 
 //call eventbrite
 
@@ -142,42 +138,56 @@ const DOM = {
 
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	document.querySelector(".rightContainer").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector("#searchContainer").style.marginTop = "1em";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 	});
 }),
-
-document.querySelector("#search-concerts").addEventListener("click", event => {
-	let searchTerm = document.querySelector("#search-bar").value;
-	API.tmArray(searchTerm).then(data => DOM.tmResults(data));
-}),
-
-document.querySelector("#search-meetups").addEventListener("click", event => {
-	let searchTerm = document.querySelector("#search-bar").value;
-	API.eventbrite(searchTerm).then(data => {
-		DOM.ebResults(data);
-	});
-}),
-document.querySelector("#search-restaurants").addEventListener("click", event => {
-	let searchTerm = document.querySelector("#search-bar").value;
-	API.restaurantList(searchTerm).then(data => {DOM.restaurantResults(data)});
-}) 
-
-
-
+	document
+		.querySelector("#search-concerts")
+		.addEventListener("click", event => {
+			let searchTerm = document.querySelector("#search-bar").value;
+			document.querySelector(".rightContainer").style.display = "block";
+			document.querySelector(".itineraryWrapper").style.display = "block";
+			document.querySelector("#searchContainer").style.marginTop = "1em";
+			API.tmArray(searchTerm).then(data => DOM.tmResults(data));
+		}),
+	document.querySelector("#search-meetups").addEventListener("click", event => {
+		let searchTerm = document.querySelector("#search-bar").value;
+		document.querySelector(".rightContainer").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector("#searchContainer").style.marginTop = "1em";
+		API.eventbrite(searchTerm).then(data => {
+			DOM.ebResults(data);
+		});
+	}),
+	document
+		.querySelector("#search-restaurants")
+		.addEventListener("click", event => {
+			let searchTerm = document.querySelector("#search-bar").value;
+			document.querySelector(".rightContainer").style.display = "block";
+			document.querySelector(".itineraryWrapper").style.display = "block";
+			document.querySelector("#searchContainer").style.marginTop = "1em";
+			API.restaurantList(searchTerm).then(data => {
+				DOM.restaurantResults(data);
+			});
+		});
 
 const itinerary = {
-		park: "",
-		concert: "",
-		meetup: "",
-		restaurant: ""
+	park: "",
+	concert: "",
+	meetup: "",
+	restaurant: ""
+};
 
-  }
-
- const saveButton = (button) => {
-	itinerary[button.name] = button.value
-	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
-}
+const saveButton = button => {
+	itinerary[button.name] = button.value;
+	document.querySelector(
+		"#itinerary-container"
+	).innerHTML = WEB.createItinerary();
+};
 
 //   function savePark(clickedPark) {
 // 		let selectedPark = clickedPark.value
@@ -199,8 +209,6 @@ const itinerary = {
 //     	console.log(selectedMeepups)
 //     	document.querySelector("#itinerary-container").innerHTML = WEB.createItinerary()
 // })
-
-
 
 // function saveEvent(clickedEvent) {
 // 		itinerary.meetups = clickedEvent.value.text
