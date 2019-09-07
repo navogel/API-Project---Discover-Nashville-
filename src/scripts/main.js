@@ -1,79 +1,82 @@
 //declare array variables
+const allArrays = {
+	park: [],
+	concert: [],
+	restaurant: [],
+	meetup: []
+};
 
-const meetupArray = [];
-const concertArray = [];
-const parkArray = [];
-const restaurantArray = [];
 const itinObj = {
 	park: {},
+	concert: {},
 	restaurant: {},
-	meetup: {},
-	concert: {}
+	meetup: {}
 };
 
 // web Component station
 
-const WEB = {
-	tmSearchResults: (item, i) => {
+const searchResult = {
+	concert: (item, i) => {
 		return `
         <section >
-        <button id="${i}" name="concertArray" class="button">${item.name}</button>
+        <button id="${i}" name="concert" class="button">${item.name}</button>
         </section>
         `;
 	},
 
-	createHTML: (item, i) => {
+	park: (item, i) => {
 		let parkData = `
         <section >
-        <button id="${i}" name="parkArray" class="button">${item.park_name}</h1>
+        <button id="${i}" name="park" class="button">${item.park_name}</h1>
         </section>`;
 		return parkData;
 	},
 
-	ebResultsHTML: (item, i) => {
+	meetup: (item, i) => {
 		return `
 		<section >
-		<button id="${i}" name="meetupArray" class="button">${item.name.text}</button>
+		<button id="${i}" name="meetup" class="button">${item.name.text}</button>
 		</section>
 		`;
 	},
-	restaurantHTML: (item, i) => {
+	restaurant: (item, i) => {
 		return `
         <section >
-        <button  id="${i}" name="restaurantArray" class="button">${item.restaurant.name}</button>
+        <button  id="${i}" name="restaurant" class="button">${item.restaurant.name}</button>
         </section>
         `;
 	},
+}
 
-	createItinerary: () => {
+	// createItinerary: () => {
+	// 	return `
+		
+		
+	// 	<div class="i1-park">
+	// 		<p class="iText">${itinerary.park}</p>
+	// 	</div>
+	// 	<div class="i1-concert">
+	// 		<p class="iText">${itinerary.concert}</p>
+	// 	</div>
+	// 	<div class="i1-meetup">
+	// 		<p class="iText">${itinerary.meetup}</p>
+	// 	</div>
+	// 	<div class="i1-restaurant">
+	// 		<p class="iText">${itinerary.restaurant}</p>
+	// 	</div>
+	// 	`;
+	// },
+const createItinerary = {
+	concert: object => {
 		return `
-		
-		
-		<div class="i1-park">
-			<p class="iText">${itinerary.park}</p>
-		</div>
+			
 		<div class="i1-concert">
-			<p class="iText">${itinerary.concert}</p>
-		</div>
-		<div class="i1-meetup">
-			<p class="iText">${itinerary.meetup}</p>
-		</div>
-		<div class="i1-restaurant">
-			<p class="iText">${itinerary.restaurant}</p>
-		</div>
-		`;
-	},
-
-	createConcertItinerary: object => {
-		return `
-			
-		<div class="i1-concert">
 			<p class="iText">${object.name}</p>
 		</div>
 		
 		`;
 	},
-	createParkItinerary: object => {
+	park: object => {
 		return `
 			
 		<div class="i1-park">
@@ -82,7 +85,7 @@ const WEB = {
 		
 		`;
 	},
-	createMeetupItinerary: object => {
+	meetup: object => {
 		return `
 			
 		<div class="i1-meetup">
@@ -91,7 +94,7 @@ const WEB = {
 		
 		`;
 	},
-	createRestaurantItinerary: object => {
+	restaurant: object => {
 		return `
 			
 		<div class="i1-restaurant">
@@ -162,43 +165,43 @@ const searchResultsContainer = document.querySelector(
 const DOM = {
 	tmResults: array => {
 		let i = -1;
-		concertArray.length = 0;
+		allArrays.concert.length = 0;
 		searchResultsContainer.innerHTML = "";
 		array.forEach(item => {
 			i++;
-			concertArray[i] = item;
-			searchResultsContainer.innerHTML += WEB.tmSearchResults(item, i);
+			allArrays.concert[i] = item;
+			searchResultsContainer.innerHTML += searchResult.concert(item, i);
 		});
 	},
 	parkResult: data => {
 		let i = -1;
-		parkArray.length = 0;
+		allArrays.park.length = 0;
 		searchResultsContainer.innerHTML = "";
 		data.forEach(item => {
 			i++;
-			parkArray[i] = item;
-			searchResultsContainer.innerHTML += WEB.createHTML(item, i);
+			allArrays.park[i] = item;
+			searchResultsContainer.innerHTML += searchResult.park(item, i);
 		});
 	},
 	ebResults: array => {
 		let i = -1;
-		meetupArray.length = 0;
+		allArrays.meetup.length = 0;
 		searchResultsContainer.innerHTML = "";
 		array.forEach(item => {
 			i++;
-			meetupArray[i] = item;
-			searchResultsContainer.innerHTML += WEB.ebResultsHTML(item, i);
+			allArrays.meetup[i] = item;
+			searchResultsContainer.innerHTML += searchResult.meetup(item, i);
 			// console.log(i);
 		});
 	},
 	restaurantResults: array => {
 		let i = -1;
-		restaurantArray.length = 0;
+		allArrays.restaurant.length = 0;
 		(searchResultsContainer.innerHTML = ""),
 			array.forEach(item => {
 				i++;
-				restaurantArray[i] = item;
-				searchResultsContainer.innerHTML += WEB.restaurantHTML(item, i);
+				allArrays.restaurant[i] = item;
+				searchResultsContainer.innerHTML += searchResult.restaurant(item, i);
 			});
 	}
 };
@@ -253,37 +256,13 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 // 	).innerHTML = WEB.createItinerary();
 // };
 
-document
-	.querySelector("#search-results-container")
-	.addEventListener("click", event => {
-		let i = event.target.id;
-		if (event.target.name.startsWith("concert")) {
-			itinObj.concert = concertArray[i];
-			console.log(itinObj.concert);
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
-			console.log(itinObj);
-		} else if (event.target.name.startsWith("restaurant")) {
-			itinObj.restaurant = restaurantArray[i].restaurant;
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
-			console.log(itinObj);
-		} else if (event.target.name.startsWith("park")) {
-			itinObj.park = parkArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createParkItinerary(itinObj.park);
-			console.log(itinObj);
-		} else if (event.target.name.startsWith("meetup")) {
-			itinObj.meetup = meetupArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createMeetupItinerary(itinObj.meetup);
-			console.log(itinObj);
-		}
-	});
+document.querySelector("#search-results-container").addEventListener("click", event => {
+	let i = event.target.id;
+	let key = event.target.name
+	itinObj[key] = allArrays[key][i];
+	document.querySelector("#itinerary-container").innerHTML = createItinerary[key](itinObj[key]);
+})
+
 
 //   function savePark(clickedPark) {
 // 		let selectedPark = clickedPark.value
