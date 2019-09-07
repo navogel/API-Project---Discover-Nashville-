@@ -128,15 +128,16 @@ const API = {
 };
 
 //DOM station
-const searchResultsContainer = document.querySelector(
-	"#search-results-container"
-);
+const searchResultsContainer = document.querySelector("#search-results-container");
+const spinnerContainer = document.querySelector("#spinner-container");
+const spinnerText = document.querySelector("#spinner-text");
 
 const DOM = {
 	tmResults: array => {
 		let i = -1;
 		allArrays.concert.length = 0;
 		searchResultsContainer.innerHTML = "";
+		spinnerContainer.style.display = "none";
 		array.forEach(item => {
 			i++;
 			allArrays.concert[i] = item;
@@ -147,6 +148,7 @@ const DOM = {
 		let i = -1;
 		allArrays.park.length = 0;
 		searchResultsContainer.innerHTML = "";
+		spinnerContainer.style.display = "none";
 		data.forEach(item => {
 			i++;
 			allArrays.park[i] = item;
@@ -157,6 +159,7 @@ const DOM = {
 		let i = -1;
 		allArrays.meetup.length = 0;
 		searchResultsContainer.innerHTML = "";
+		spinnerContainer.style.display = "none";
 		array.forEach(item => {
 			i++;
 			allArrays.meetup[i] = item;
@@ -167,7 +170,8 @@ const DOM = {
 	restaurantResults: array => {
 		let i = -1;
 		allArrays.restaurant.length = 0;
-		(searchResultsContainer.innerHTML = ""),
+		searchResultsContainer.innerHTML = "",
+		spinnerContainer.style.display = "none";
 			array.forEach(item => {
 				i++;
 				allArrays.restaurant[i] = item;
@@ -182,34 +186,43 @@ const DOM = {
 
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	searchResultsContainer.innerHTML = ""
+	spinnerContainer.style.display = "inline";
+	spinnerText.innerHTML = "searching parks..."
+	document.querySelector("#details-page").style.display = "none";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#details-page").style.display = "none";
 	});
 });
 
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	searchResultsContainer.innerHTML = ""
+	spinnerContainer.style.display = "inline";
+	spinnerText.innerHTML = "searching events..."
+	document.querySelector("#details-page").style.display = "none";
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#details-page").style.display = "none";
 	});
 });
 
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	searchResultsContainer.innerHTML = ""
+	spinnerContainer.style.display = "inline";
+	spinnerText.innerHTML = "searching meetups..."
+	document.querySelector("#details-page").style.display = "none";
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#details-page").style.display = "none";
 	});
 });
 
@@ -217,12 +230,15 @@ document
 	.querySelector("#search-restaurants")
 	.addEventListener("click", event => {
 		let searchTerm = document.querySelector("#search-bar").value;
+		searchResultsContainer.innerHTML = ""
+		spinnerContainer.style.display = "inline";
+		spinnerText.innerHTML = "searching restaurants..."
+		document.querySelector("#details-page").style.display = "none";
 		API.restaurantList(searchTerm).then(data => {
 			DOM.restaurantResults(data);
 			document.querySelector(".rightContainer").style.display = "block";
 			document.querySelector(".itineraryWrapper").style.display = "block";
 			document.querySelector("#searchContainer").style.marginTop = "1em";
-			document.querySelector("#details-page").style.display = "none";
 		});
 	});
 
@@ -276,11 +292,11 @@ const detailsContainer = {
 // 	var marker = new google.maps.Marker({position: uluru, map: map});
 //   }
 
-  const itinerarySelector = {
-	park:  (object, key) => {document.querySelector(".i1-park").innerHTML = createItinerary[key](object)},
-	concert: (object, key) => {document.querySelector(".i1-concert").innerHTML = createItinerary[key](object)},
-	restaurant: (object, key) => {document.querySelector(".i1-restaurant").innerHTML = createItinerary[key](object)},
-	meetup: (object, key) => {document.querySelector(".i1-meetup").innerHTML = createItinerary[key](object)}
+const itinerarySelector = {
+	park: (object, key) => { document.querySelector(".i1-park").innerHTML = createItinerary[key](object) },
+	concert: (object, key) => { document.querySelector(".i1-concert").innerHTML = createItinerary[key](object) },
+	restaurant: (object, key) => { document.querySelector(".i1-restaurant").innerHTML = createItinerary[key](object) },
+	meetup: (object, key) => { document.querySelector(".i1-meetup").innerHTML = createItinerary[key](object) }
 };
 
 const detailsObject = {
@@ -304,7 +320,7 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 })
 
 // confirmSave
-  document.querySelector("#save-to-itinerary").addEventListener("click", event => {
+document.querySelector("#save-to-itinerary").addEventListener("click", event => {
 	let i = detailsObject.id;
 	let key = detailsObject.key
 	itinObj[key] = detailsObject.object;
