@@ -179,3 +179,32 @@ main {
 	font-size: 20px;
 	line-height: 2em;
 }
+
+#details-page {
+	position: fixed;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+	width: 300px;
+	height: 300px;
+	border: 7px solid pink;
+	z-index: 5;
+
+}
+
+#map {
+	height: 400px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+}
+
+#save-to-itinerary {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+}
+
+#back-button{
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+}

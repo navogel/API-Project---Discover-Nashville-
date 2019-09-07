@@ -260,8 +260,71 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 	let i = event.target.id;
 	let key = event.target.name
 	itinObj[key] = allArrays[key][i];
-	document.querySelector("#itinerary-container").innerHTML = createItinerary[key](itinObj[key]);
+	console.log(itinObj[key])
+	// document.querySelector("#itinerary-container").innerHTML = createItinerary[key](itinObj[key]);
+	document.querySelector("#details-page").innerHTML = detailsPage[key](itinObj[key]);
 })
+
+const detailsPage = {
+	concert: item => {
+		return `
+			
+		<div>
+			<p class="iText">${item.name}</p>
+		</div>
+		
+		`;
+	},
+	park: item => {
+		return `
+			
+		<div>
+			<p class="iText">${item.park_name}</p>
+			<p class="iText">${item.mapped_location.human_address}</p>
+			<p class="iText">${item.mapped_location.human_address}</p>
+			<div id="map"></div>
+			<button id="save-to-itinerary" class="button">Save to Itinerary</button>
+			<button id="back-button" class="button">Back</button>
+			
+		</div>
+		
+		`;
+	},
+	meetup: item => {
+		return `
+			
+		<div>
+			<p class="iText">${item.name.text}</p>
+		</div>
+		
+		`;
+	},
+	restaurant: item => {
+		return `
+			
+		<div>
+			<p class="iText">${item.restaurant.name}</p>
+		</div>
+		
+		`;
+	}
+};
+
+
+function initMap() {
+	// The location of Uluru
+	var uluru = {lat: -25.344, lng: 131.036};
+	// The map, centered at Uluru
+	var map = new google.maps.Map(
+		document.getElementById('map'), {zoom: 4, center: uluru});
+	// The marker, positioned at Uluru
+	var marker = new google.maps.Marker({position: uluru, map: map});
+  }
+
+
+// confirmSave
+
+
 
 
 //   function savePark(clickedPark) {
