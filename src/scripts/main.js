@@ -45,59 +45,46 @@ const WEB = {
         `;
 	},
 
-	createItinerary: () => {
-		return `
-		
-		
-		<div class="i1-park">
-			<p class="iText">${itinerary.park}</p>
-		</div>
-		<div class="i1-concert">
-			<p class="iText">${itinerary.concert}</p>
-		</div>
-		<div class="i1-meetup">
-			<p class="iText">${itinerary.meetup}</p>
-		</div>
-		<div class="i1-restaurant">
-			<p class="iText">${itinerary.restaurant}</p>
-		</div>
-		`;
-	},
+	// createItinerary: () => {
+	// 	return `
+
+	// 	<div class="i1-park">
+	// 		<p class="iText">${itinerary.park}</p>
+	// 	</div>
+	// 	<div class="i1-concert">
+	// 		<p class="iText">${itinerary.concert}</p>
+	// 	</div>
+	// 	<div class="i1-meetup">
+	// 		<p class="iText">${itinerary.meetup}</p>
+	// 	</div>
+	// 	<div class="i1-restaurant">
+	// 		<p class="iText">${itinerary.restaurant}</p>
+	// 	</div>
+	// 	`;
+	// },
 
 	createConcertItinerary: object => {
 		return `
-			
-		<div class="i1-concert">
 			<p class="iText">${object.name}</p>
-		</div>
-		
+			<img class="pinConcert" src="/src/images/pin.png" />
 		`;
 	},
 	createParkItinerary: object => {
 		return `
-			
-		<div class="i1-park">
-			<p class="iText">${object.name}</p>
-		</div>
-		
+			<p class="iText">${object.park_name}</p>
+			<img class="pinPark" src="/src/images/pin.png" />
 		`;
 	},
 	createMeetupItinerary: object => {
 		return `
-			
-		<div class="i1-meetup">
-			<p class="iText">${object.name}</p>
-		</div>
-		
+			<p class="iText">${object.name.text}</p>
+			<img class="pinMeetup" src="/src/images/pin.png" />
 		`;
 	},
 	createRestaurantItinerary: object => {
 		return `
-			
-		<div class="i1-restaurant">
 			<p class="iText">${object.name}</p>
-		</div>
-		
+			<img class="pinRestaurant" src="/src/images/pin.png"/>
 		`;
 	}
 };
@@ -209,42 +196,45 @@ const DOM = {
 
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
-	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
-	document.querySelector("#searchContainer").style.marginTop = "1em";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
-	});
-}),
-	document
-		.querySelector("#search-concerts")
-		.addEventListener("click", event => {
-			let searchTerm = document.querySelector("#search-bar").value;
-			document.querySelector(".rightContainer").style.display = "block";
-			document.querySelector(".itineraryWrapper").style.display = "block";
-			document.querySelector("#searchContainer").style.marginTop = "1em";
-			API.tmArray(searchTerm).then(data => DOM.tmResults(data));
-		}),
-	document.querySelector("#search-meetups").addEventListener("click", event => {
-		let searchTerm = document.querySelector("#search-bar").value;
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
-		API.eventbrite(searchTerm).then(data => {
-			DOM.ebResults(data);
-		});
-	}),
-	document
-		.querySelector("#search-restaurants")
-		.addEventListener("click", event => {
-			let searchTerm = document.querySelector("#search-bar").value;
+	});
+});
+
+document.querySelector("#search-concerts").addEventListener("click", event => {
+	let searchTerm = document.querySelector("#search-bar").value;
+	API.tmArray(searchTerm).then(data => {
+		DOM.tmResults(data);
+		document.querySelector(".rightContainer").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector("#searchContainer").style.marginTop = "1em";
+	});
+});
+
+document.querySelector("#search-meetups").addEventListener("click", event => {
+	let searchTerm = document.querySelector("#search-bar").value;
+	API.eventbrite(searchTerm).then(data => {
+		DOM.ebResults(data);
+		document.querySelector(".rightContainer").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector("#searchContainer").style.marginTop = "1em";
+	});
+});
+
+document
+	.querySelector("#search-restaurants")
+	.addEventListener("click", event => {
+		let searchTerm = document.querySelector("#search-bar").value;
+		API.restaurantList(searchTerm).then(data => {
+			DOM.restaurantResults(data);
 			document.querySelector(".rightContainer").style.display = "block";
 			document.querySelector(".itineraryWrapper").style.display = "block";
 			document.querySelector("#searchContainer").style.marginTop = "1em";
-			API.restaurantList(searchTerm).then(data => {
-				DOM.restaurantResults(data);
-			});
 		});
+	});
 
 // const saveButton = button => {
 // 	itinerary[button.name] = button.value;
@@ -258,28 +248,36 @@ document
 	.addEventListener("click", event => {
 		let i = event.target.id;
 		if (event.target.name.startsWith("concert")) {
+			document.querySelector(".i1-concert").style.backgroundImage =
+				"url('/src/images/concert.jpg')";
 			itinObj.concert = concertArray[i];
 			console.log(itinObj.concert);
 			document.querySelector(
-				"#itinerary-container"
+				".i1-concert"
 			).innerHTML = WEB.createConcertItinerary(itinObj.concert);
 			console.log(itinObj);
 		} else if (event.target.name.startsWith("restaurant")) {
+			document.querySelector(".i1-restaurant").style.backgroundImage =
+				"url('/src/images/restaurant.jpg')";
 			itinObj.restaurant = restaurantArray[i].restaurant;
 			document.querySelector(
-				"#itinerary-container"
+				".i1-restaurant"
 			).innerHTML = WEB.createRestaurantItinerary(itinObj.restaurant);
 			console.log(itinObj);
 		} else if (event.target.name.startsWith("park")) {
+			document.querySelector(".i1-park").style.backgroundImage =
+				"url('/src/images/park.jpg')";
 			itinObj.park = parkArray[i];
-			document.querySelector(
-				"#itinerary-container"
-			).innerHTML = WEB.createParkItinerary(itinObj.park);
+			document.querySelector(".i1-park").innerHTML = WEB.createParkItinerary(
+				itinObj.park
+			);
 			console.log(itinObj);
 		} else if (event.target.name.startsWith("meetup")) {
+			document.querySelector(".i1-meetup").style.backgroundImage =
+				"url('/src/images/meetup.jpg')";
 			itinObj.meetup = meetupArray[i];
 			document.querySelector(
-				"#itinerary-container"
+				".i1-meetup"
 			).innerHTML = WEB.createMeetupItinerary(itinObj.meetup);
 			console.log(itinObj);
 		}
