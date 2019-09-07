@@ -65,38 +65,26 @@ const WEB = {
 
 	createConcertItinerary: object => {
 		return `
-			
-		
 			<p class="iText">${object.name}</p>
-		
-		
+			<img class="pinConcert" src="/src/images/pin.png" />
 		`;
 	},
 	createParkItinerary: object => {
 		return `
-			
-		
 			<p class="iText">${object.park_name}</p>
-		
-		
+			<img class="pinPark" src="/src/images/pin.png" />
 		`;
 	},
 	createMeetupItinerary: object => {
 		return `
-			
-		
 			<p class="iText">${object.name.text}</p>
-		
-		
+			<img class="pinMeetup" src="/src/images/pin.png" />
 		`;
 	},
 	createRestaurantItinerary: object => {
 		return `
-			
-		
 			<p class="iText">${object.name}</p>
-		
-		
+			<img class="pinRestaurant" src="/src/images/pin.png"/>
 		`;
 	}
 };
