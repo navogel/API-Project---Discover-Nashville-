@@ -34,23 +34,25 @@ main {
 .leftContainer {
 	display: flex;
 	flex-direction: column;
-	width: 500px;
+	max-width: 500px;
 }
 
 .rightContainer {
 	/* border: 1px solid red; */
 	/* height: 90vh; */
-	width: 500px;
+	max-width: 500px;
 	/* overflow: hidden; */
 	/* display: none; */
 	display: none;
+	min-width: 350px;
+	flex: 1 1 0;
 }
 
 .itineraryWrapper {
 	/* border: 1px solid red; */
 	margin: 1em;
 	padding-top: 0em;
-	height: 58vh;
+	height: auto;
 	/* display: none; */
 	background-color: #ffffffb3;
 	border-radius: 15px;
@@ -85,25 +87,25 @@ main {
 }
 
 .i1-park {
-	background-image: url("/src/images/park.jpg");
+	/* background-image: url("/src/images/park.jpg"); */
 	background-size: cover;
 	/* display: hidden; */
 }
 
 .i1-concert {
-	background-image: url("/src/images/concert.jpg");
+	/* background-image: url("/src/images/concert.jpg"); */
 	background-size: cover;
 	/* display: hidden; */
 }
 
 .i1-meetup {
-	background-image: url("/src/images/meetup.jpg");
+	/* background-image: url("/src/images/meetup.jpg"); */
 	background-size: cover;
 	/* display: hidden; */
 }
 
 .i1-restaurant {
-	background-image: url("/src/images/restaurant.jpg");
+	/* background-image: url("/src/images/restaurant.jpg"); */
 	background-size: cover;
 	/* display: hidden; */
 }
@@ -120,15 +122,15 @@ main {
 	padding: 1em;
 	/* border: 1px solid red; */
 	/* overflow: scroll; */
-	height: 93vh;
+	max-height: 91vh;
 	background-color: #ffffffb3;
 	border-radius: 15px;
 	border: 3px solid #d3ece3;
 }
 
 #search-results-container {
-	overflow: auto;
-	height: 100%;
+	overflow-x: hidden;
+	height: -webkit-fill-available;
 }
 
 #search-results-container > section {
@@ -178,4 +180,6 @@ main {
 	background: none;
 	font-size: 20px;
 	line-height: 2em;
+	width: 100%;
+	text-align: left;
 }
