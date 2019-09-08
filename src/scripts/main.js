@@ -334,8 +334,8 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 	detailsObject.object = allArrays[key][i];
 	detailsObject.key = key;
 	detailsObject.id = i;
-	document.querySelector("#details-page").classList = "details-show";
 	document.querySelector("#details-wrapper").classList = "details-wrap-show";
+	document.querySelector("#details-page").classList = "details-show";
 	document.querySelector("#details-container").innerHTML = detailsContainer[key](detailsObject.object);
 	console.log(detailsObject)
 	// itinerarySelector[key](itinObj[key], key);
