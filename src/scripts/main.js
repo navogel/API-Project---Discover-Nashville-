@@ -35,9 +35,10 @@ const searchResult = {
 	},
 
 	park: (object, i) => {
+		let parkAddress = JSON.parse(object.mapped_location.human_address)
 		let parkData = `
         <section >
-        <button id="${i}" name="park" class="button resultButton">${object.park_name}</h1>
+        <button title="${parkAddress.address}, ${parkAddress.city} ${parkAddress.state}" id="${i}" name="park" class="button resultButton">${object.park_name}</h1>
         </section>`;
 		return parkData;
 	},
@@ -52,7 +53,7 @@ const searchResult = {
 	restaurant: (object, i) => {
 		return `
         <section >
-        <button id="${i}" name="restaurant" class="button resultButton">${object.restaurant.name}</button>
+        <button title="${object.restaurant.location.address}" id="${i}" name="restaurant" class="button resultButton">${object.restaurant.name}</button>
         </section>
         `;
 	},
