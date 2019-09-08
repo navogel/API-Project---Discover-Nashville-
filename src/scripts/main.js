@@ -1,7 +1,7 @@
 
 window.addEventListener('scroll', function () {
 	var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-	var detailsPos = 0.642 * scrollPos;
+	var detailsPos = 0.72 * scrollPos;
     document.documentElement.style.setProperty('--scrollPos', `${detailsPos}px`);
     }
 )
@@ -145,7 +145,10 @@ const spinnerText = document.querySelector("#spinner-text");
 const detailsHide = () => {
 	let details = document.querySelector("#details-page")
 	details.classList = "details-hide";
-	setTimeout(function () { details.classList = "hidden" }, 290);
+	setTimeout(function () { 
+		details.classList = "hidden"
+		document.querySelector("#details-wrapper").classList = "details-wrap-hide";
+	 }, 290);
 	
 }
 
@@ -332,6 +335,7 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 	detailsObject.key = key;
 	detailsObject.id = i;
 	document.querySelector("#details-page").classList = "details-show";
+	document.querySelector("#details-wrapper").classList = "details-wrap-show";
 	document.querySelector("#details-container").innerHTML = detailsContainer[key](detailsObject.object);
 	console.log(detailsObject)
 	// itinerarySelector[key](itinObj[key], key);

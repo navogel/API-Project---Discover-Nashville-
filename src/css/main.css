@@ -238,8 +238,14 @@ main {
 	width:100%;
 	height: 100%;
 	transform: translate(0px, var(--scrollPos));
-	visibility: hidden;
 	z-index: 4;
+}
+.details-wrap-show {
+	visibility: visible;
+}
+
+.details-wrap-hide {
+	visibility: hidden;
 }
 
 #details-page {
