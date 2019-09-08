@@ -132,6 +132,14 @@ const searchResultsContainer = document.querySelector("#search-results-container
 const spinnerContainer = document.querySelector("#spinner-container");
 const spinnerText = document.querySelector("#spinner-text");
 
+const detailsHide = () => {
+	let details = document.querySelector("#details-page")
+	details.classList = "details-hide";
+	setTimeout(function () { details.classList = "hidden" }, 390);
+	
+}
+
+
 const DOM = {
 	tmResults: array => {
 		let i = -1;
@@ -189,7 +197,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching parks..."
-	document.querySelector("#details-page").style.display = "none";
+	document.querySelector("#details-page").classList = "hidden";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 		document.querySelector(".rightContainer").style.display = "block";
@@ -203,7 +211,7 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching events..."
-	document.querySelector("#details-page").style.display = "none";
+	document.querySelector("#details-page").classList = "hidden";
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
@@ -217,7 +225,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching meetups..."
-	document.querySelector("#details-page").style.display = "none";
+	document.querySelector("#details-page").classList = "hidden";
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
@@ -233,7 +241,7 @@ document
 		searchResultsContainer.innerHTML = ""
 		spinnerContainer.style.display = "inline";
 		spinnerText.innerHTML = "searching restaurants..."
-		document.querySelector("#details-page").style.display = "none";
+		document.querySelector("#details-page").classList = "hidden";
 		API.restaurantList(searchTerm).then(data => {
 			DOM.restaurantResults(data);
 			document.querySelector(".rightContainer").style.display = "block";
@@ -313,7 +321,7 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 	detailsObject.object = allArrays[key][i];
 	detailsObject.key = key;
 	detailsObject.id = i;
-	document.querySelector("#details-page").style.display = "inline";
+	document.querySelector("#details-page").classList = "details-show";
 	document.querySelector("#details-container").innerHTML = detailsContainer[key](detailsObject.object);
 	console.log(detailsObject)
 	// itinerarySelector[key](itinObj[key], key);
@@ -326,8 +334,9 @@ document.querySelector("#save-to-itinerary").addEventListener("click", event => 
 	itinObj[key] = detailsObject.object;
 	console.log(itinObj[key])
 	itinerarySelector[key](detailsObject.object, key);
-	document.querySelector("#details-page").style.display = "none";
+	detailsHide();
 })
+
 
 
 

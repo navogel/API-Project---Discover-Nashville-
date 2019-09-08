@@ -218,20 +218,53 @@ main {
 #details-page {
 	position: fixed;
 	left: 50%;
-    top: 50%;
-    transform: translate(-50%, -100%);
+    top: 40%;
+    transform: translate(-50%, 0px);
 	width: 300px;
 	height: 300px;
 	border: 7px solid pink;
 	z-index: 5;
-	display: none;
+}
+
+.details-hide {
+	-webkit-animation: details-hide .4s ease-out;
+	animation: details-hide .4s ease-out;
 
 }
 
-#map {
+@-webkit-keyframes details-hide {
+	0% { transform: translate(-50%, 0px); filter: opacity(1) } 
+	100% { transform: translate(-50%, 50px); filter: opacity(0)  }
+  }
+  
+  @keyframes details-hide { 
+	0% { transform: translate(-50%, 0px); filter: opacity(1) } 
+	100% { transform: translate(-50%, 50px); filter: opacity(0)  }
+  }
+
+.details-show{
+	visibility: visible;
+	-webkit-animation: details-show .4s ease-out;
+	animation: details-show .4s ease-out;
+}
+
+@-webkit-keyframes details-show {
+	0% { transform: translate(-50%, 50px); filter: opacity(0) } 
+	100% { transform: translate(-50%, 0px); filter: opacity(1)  }
+  }
+  
+  @keyframes details-show { 
+	0% { transform: translate(-50%, 50px); filter: opacity(0) } 
+	100% { transform: translate(-50%, 0px); filter: opacity(1)  }
+  }
+
+  .hidden {
+	visibility: hidden;
+  }
+/* #map {
 	height: 100px;
     width: 100px;
-}
+} */
 
 #save-to-itinerary {
 	position: absolute;
@@ -249,11 +282,10 @@ main {
 #spinner {
 	position: absolute;
 	margin: 0;
-	top: 50%;
+	top: 55%;
 	left: 50%;
 	width: 50px;
 	height: 50px;
-	z-index: 2;
 	border: 10px solid #e5f5ef;
 	border-radius: 50%;
 	border-top: 10px solid #b6ddcf;
@@ -282,7 +314,8 @@ main {
   #spinner-text {
 	text-align: center;
 	position: absolute;
-	top: 40%;
+	z-index: 1;
+	top: 45%;
 	left: 50%;
 	transform: translate(-50%, -50%)
   }
