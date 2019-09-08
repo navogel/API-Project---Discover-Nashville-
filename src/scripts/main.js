@@ -1,4 +1,4 @@
-
+// change y transform of details page 
 window.addEventListener('scroll', function () {
 	var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 	var detailsPos = 0.72 * scrollPos;
@@ -140,9 +140,11 @@ const API = {
 
 //DOM station
 const searchResultsContainer = document.querySelector("#search-results-container");
+// loading spinner
 const spinnerContainer = document.querySelector("#spinner-container");
 const spinnerText = document.querySelector("#spinner-text");
 
+// hides the details page and its wrapper
 const detailsHide = () => {
 	let details = document.querySelector("#details-page")
 	details.classList = "details-hide";
@@ -314,6 +316,8 @@ const detailsContainer = {
 // 	var marker = new google.maps.Marker({position: uluru, map: map});
 //   }
 
+
+// puts the object into the correct itinerary container using object keys
 const itinerarySelector = {
 	park: (object, key) => { document.querySelector(".i1-park").innerHTML = createItinerary[key](object) },
 	concert: (object, key) => { document.querySelector(".i1-concert").innerHTML = createItinerary[key](object) },
@@ -321,17 +325,17 @@ const itinerarySelector = {
 	meetup: (object, key) => { document.querySelector(".i1-meetup").innerHTML = createItinerary[key](object) }
 };
 
+// contains the temprarily viewed object, id, and name attribute (to be used later as object keys) 
 const detailsObject = {
 	object: {},
 	key: {},
 	id: {}
 }
 
+// pushes the clicked object to a temporary holding tank - detailsObject - and also passes along the id and name attribute
 document.querySelector("#search-results-container").addEventListener("click", event => {
 	let i = event.target.id;
 	let key = event.target.name
-	// itinObj[key] = allArrays[key][i];
-
 	detailsObject.object = allArrays[key][i];
 	detailsObject.key = key;
 	detailsObject.id = i;
@@ -339,7 +343,6 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 	document.querySelector("#details-page").classList = "details-show";
 	document.querySelector("#details-container").innerHTML = detailsContainer[key](detailsObject.object);
 	console.log(detailsObject)
-	// itinerarySelector[key](itinObj[key], key);
 })
 
 // confirmSave
@@ -349,6 +352,7 @@ document.querySelector("#save-to-itinerary").addEventListener("click", event => 
 	itinObj[key] = detailsObject.object;
 	console.log(itinObj[key])
 	itinerarySelector[key](detailsObject.object, key);
+	backgroundSetter[key]();
 	detailsHide();
 })
 
@@ -359,6 +363,15 @@ document.querySelector("#x-button").addEventListener("click", event => {
 	setTimeout(function () { circle.classList = ""}, 200);
 
 });
+
+
+// called by save button using object keys
+const backgroundSetter = {
+	park: () => { document.querySelector(".i1-park").style.backgroundImage = "url('/src/images/park.jpg')"; },
+	concert: () => { document.querySelector(".i1-concert").style.backgroundImage = "url('/src/images/concert.jpg')"; },
+	restaurant: () => { document.querySelector(".i1-restaurant").style.backgroundImage ="url('/src/images/restaurant.jpg')";},
+	meetup: () => { document.querySelector(".i1-meetup").style.backgroundImage = "url('/src/images/meetup.jpg')"; }
+};
 
 
 
