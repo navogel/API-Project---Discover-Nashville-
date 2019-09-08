@@ -1,3 +1,7 @@
+:root {
+	--scrollPos: 0;
+}
+
 * {
 	box-sizing: border-box;
 	/* font-family: "Abril Fatface", cursive; */
@@ -61,6 +65,7 @@ main {
 	text-align: center;
 	display: none;
 	padding: 0.5em;
+	position: relative; /* kw added */
 }
 
 #itinerary-container {
@@ -126,7 +131,7 @@ main {
 	/* border: 1px solid red; */
 	/* overflow: scroll; */
 	max-height: 93vh;
-	background-color: #ffffffb3;
+	background-color: #ffffff;
 	border-radius: 15px;
 	border: 3px solid #d3ece3;
 }
@@ -177,6 +182,7 @@ main {
 
 .searchBtn {
 	margin: 0.3em;
+	
 }
 .button {
 	border: none;
@@ -185,6 +191,16 @@ main {
 	line-height: 2em;
 	width: 100%;
 	text-align: left;
+}
+
+.resultButton {
+	color: #3a3a3a;
+	transition: 0.1s
+}
+
+.resultButton:hover {
+	color: #000000;
+	
 }
 
 .pinPark {
@@ -215,47 +231,63 @@ main {
 	height: 3em;
 }
 
-#details-page {
-	position: fixed;
-	left: 50%;
-    top: 40%;
-    transform: translate(-50%, 0px);
-	width: 300px;
-	height: 300px;
-	border: 7px solid pink;
-	z-index: 5;
+#details-wrapper {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width:100%;
+	height: 100%;
+	transform: translate(0px, var(--scrollPos));
+	visibility: hidden;
+	z-index: 4;
 }
 
+#details-page {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width:100%;
+	height: 100%;
+	max-height: 93vh;
+	border: 7px solid pink;
+	z-index: 5;
+	background-color: white;
+	border-radius: 15px;
+	
+	
+}
+
+
 .details-hide {
-	-webkit-animation: details-hide .4s ease-out;
-	animation: details-hide .4s ease-out;
+	-webkit-animation: details-hide .3s ease-out;
+	animation: details-hide .3s ease-out;
 
 }
 
 @-webkit-keyframes details-hide {
-	0% { transform: translate(-50%, 0px); filter: opacity(1) } 
-	100% { transform: translate(-50%, 50px); filter: opacity(0)  }
+	0% { transform: translate(-0%, 0px); filter: opacity(1) } 
+	100% { transform: translate(-0%, 35px); filter: opacity(0)  }
   }
   
   @keyframes details-hide { 
-	0% { transform: translate(-50%, 0px); filter: opacity(1) } 
-	100% { transform: translate(-50%, 50px); filter: opacity(0)  }
+	0% { transform: translate(-0%, 0px); filter: opacity(1) } 
+	100% { transform: translate(-0%, 35px); filter: opacity(0)  }
   }
 
 .details-show{
 	visibility: visible;
-	-webkit-animation: details-show .4s ease-out;
-	animation: details-show .4s ease-out;
+	-webkit-animation: details-show .3s ease-out;
+	animation: details-show .3s ease-out;
 }
 
 @-webkit-keyframes details-show {
-	0% { transform: translate(-50%, 50px); filter: opacity(0) } 
-	100% { transform: translate(-50%, 0px); filter: opacity(1)  }
+	0% { transform: translate(-0%, 35px); filter: opacity(0) } 
+	100% { transform: translate(-0%, 0px); filter: opacity(1)  }
   }
   
   @keyframes details-show { 
-	0% { transform: translate(-50%, 50px); filter: opacity(0) } 
-	100% { transform: translate(-50%, 0px); filter: opacity(1)  }
+	0% { transform: translate(-0%, 35px); filter: opacity(0) } 
+	100% { transform: translate(-0%, 0px); filter: opacity(1)  }
   }
 
   .hidden {
@@ -272,11 +304,52 @@ main {
 	left: 0px;
 }
 
-#back-button{
+#x-button {
+	width: 25px;
+	height: 20.8px;
+	margin: 20px 10px;
 	position: absolute;
-	bottom: 0px;
+	top: 0px;
 	right: 0px;
+	outline: none;
 }
+
+#blue-x {
+	width: 25px;
+	height: 20.8px;
+	position: absolute;
+	left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+	filter: hue-rotate(315deg) opacity(0.7);
+}
+
+#x-circle {
+	border-radius: 100%;
+	border: 3px solid  #a2dac5;
+	height: 40px;
+	width: 40px;
+	background-color: white;
+	left: 50%;
+    top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.circle-grow {
+	-webkit-animation: circle-grow .4s linear 1;
+	animation: circle-grow .4s linear 1;
+}
+
+
+@-webkit-keyframes circle-grow {
+	0% { -webkit-transform: translate(-50%, -50%) rotate(0deg); height: 40px; width: 40px; }
+	100% { -webkit-transform: translate(-50%, -50%) rotate(180deg); height: 50px; width: 50px; }
+  }
+  
+  @keyframes circle-grow {
+	0% { transform: translate(-50%, -50%) rotate(0deg); height: 40px; width: 40px; }
+	100% { transform: translate(-50%, -50%) rotate(180deg); height: 50px; width: 50px; }
+  }
 
 /* Center the loader */
 #spinner {
@@ -287,7 +360,7 @@ main {
 	width: 50px;
 	height: 50px;
 	border: 10px solid #e5f5ef;
-	border-radius: 50%;
+	border-radius: 100%;
 	border-top: 10px solid #b6ddcf;
 	-webkit-animation: spin .4s linear infinite;
 	animation: spin .4s linear infinite;

@@ -1,3 +1,13 @@
+
+window.addEventListener('scroll', function () {
+	var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+	var detailsPos = 0.642 * scrollPos;
+    document.documentElement.style.setProperty('--scrollPos', `${detailsPos}px`);
+    }
+)
+
+
+
 //declare array variables
 const allArrays = {
 	park: [],
@@ -19,7 +29,7 @@ const searchResult = {
 	concert: (object, i) => {
 		return `
         <section >
-        <button id="${i}" name="concert" class="button">${object.name}</button>
+        <button id="${i}" name="concert" class="button resultButton">${object.name}</button>
         </section>
         `;
 	},
@@ -27,7 +37,7 @@ const searchResult = {
 	park: (object, i) => {
 		let parkData = `
         <section >
-        <button id="${i}" name="park" class="button">${object.park_name}</h1>
+        <button id="${i}" name="park" class="button resultButton">${object.park_name}</h1>
         </section>`;
 		return parkData;
 	},
@@ -35,14 +45,14 @@ const searchResult = {
 	meetup: (object, i) => {
 		return `
 		<section >
-		<button id="${i}" name="meetup" class="button">${object.name.text}</button>
+		<button id="${i}" name="meetup" class="button resultButton">${object.name.text}</button>
 		</section>
 		`;
 	},
 	restaurant: (object, i) => {
 		return `
         <section >
-        <button  id="${i}" name="restaurant" class="button">${object.restaurant.name}</button>
+        <button id="${i}" name="restaurant" class="button resultButton">${object.restaurant.name}</button>
         </section>
         `;
 	},
@@ -135,7 +145,7 @@ const spinnerText = document.querySelector("#spinner-text");
 const detailsHide = () => {
 	let details = document.querySelector("#details-page")
 	details.classList = "details-hide";
-	setTimeout(function () { details.classList = "hidden" }, 390);
+	setTimeout(function () { details.classList = "hidden" }, 290);
 	
 }
 
@@ -337,6 +347,13 @@ document.querySelector("#save-to-itinerary").addEventListener("click", event => 
 	detailsHide();
 })
 
+document.querySelector("#x-button").addEventListener("click", event => {
+	detailsHide();
+	let circle = document.querySelector("#x-circle")
+	circle.classList = "circle-grow"
+	setTimeout(function () { circle.classList = ""}, 200);
+
+});
 
 
 
