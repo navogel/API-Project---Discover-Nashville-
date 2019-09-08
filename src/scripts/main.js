@@ -204,12 +204,36 @@ const DOM = {
 	}
 };
 
+const bodyBackground = {
+	park: () => { 
+		var parkImg = new Image();
+		parkImg.onload = function (){document.body.style.backgroundImage = "url('images/nash-park.jpg')";}
+		parkImg.src = 'images/nash-park.jpg';
+	},
+	concert: () => { 
+		var concertImg = new Image();
+		concertImg.onload = function (){document.body.style.backgroundImage = "url('images/ryman.jpeg')";}
+		concertImg.src = 'images/ryman.jpeg';
+	},
+	restaurant: () => { 
+		var restaurantImg = new Image();
+		restaurantImg.onload = function (){document.body.style.backgroundImage = "url('images/nickys.jpg')";}
+		restaurantImg.src = 'images/nickys.jpg';
+	},
+	meetup: () => { 
+		var meetupImg = new Image();
+		meetupImg.onload = function (){document.body.style.backgroundImage = "url('images/public-square.jpg')";}
+		meetupImg.src = 'images/public-square.jpg';
+	}
+};
+
 //array variables
 
 //add event listeners to buttons
 
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	bodyBackground.park();
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching parks..."
@@ -224,6 +248,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	bodyBackground.concert();
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching events..."
@@ -238,6 +263,7 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	bodyBackground.meetup();
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching meetups..."
@@ -253,6 +279,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 document
 	.querySelector("#search-restaurants")
 	.addEventListener("click", event => {
+		bodyBackground.restaurant();
 		let searchTerm = document.querySelector("#search-bar").value;
 		searchResultsContainer.innerHTML = ""
 		spinnerContainer.style.display = "inline";
@@ -266,7 +293,7 @@ document
 		});
 	});
 
-
+// displays details on details page 
 const detailsContainer = {
 	concert: object => {
 		return `
@@ -304,17 +331,6 @@ const detailsContainer = {
 		`;
 	}
 };
-
-
-// function initMap() {
-// 	// The location of Uluru
-// 	var uluru = {lat: -25.344, lng: 131.036};
-// 	// The map, centered at Uluru
-// 	var map = new google.maps.Map(
-// 		document.getElementById('map'), {zoom: 4, center: uluru});
-// 	// The marker, positioned at Uluru
-// 	var marker = new google.maps.Marker({position: uluru, map: map});
-//   }
 
 
 // puts the object into the correct itinerary container using object keys
