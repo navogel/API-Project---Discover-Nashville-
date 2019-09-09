@@ -98,6 +98,10 @@ main {
 	flex-wrap: wrap;
 }
 
+.saveItin {
+	padding: 1em;
+}
+
 .i1-park,
 .i1-restaurant,
 .i1-meetup,
@@ -192,7 +196,7 @@ button:focus {
 	display: flex;
 	flex-direction: column;
 	margin: 2vh;
-	margin-top: 50%;
+	margin-top: 60%;
 	padding: 0.3em;
 	justify-content: center;
 	background-color: #ffffff;

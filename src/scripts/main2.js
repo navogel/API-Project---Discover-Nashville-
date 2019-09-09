@@ -181,7 +181,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	//display hidden elements from first load
 	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "flex";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	//reset search results container to empty
 	searchResultsContainer.innerHTML = "";
@@ -197,7 +197,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "flex";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
@@ -210,7 +210,7 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "flex";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
@@ -223,7 +223,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 document.querySelector("#search-restaurants").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "flex";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
@@ -258,7 +258,15 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 
 //save itinobj
 
-document.querySelector(".saveItin").addEventListener("click", event => {
-	savedItins.push(itinObj);
-	console.log(savedItins);
-});
+saveItinerary = save => {
+	fetch("http://localhost:8088/itinerary", {
+		method: "POST",
+		body: JSON.stringify(save),
+		headers: {
+			"Content-Type": "application/json"
+		}
+	})
+		.then(res => res.json())
+		.then(response => console.log("Success:", JSON.stringify(response)))
+		.catch(error => console.log("Error:", error));
+};
