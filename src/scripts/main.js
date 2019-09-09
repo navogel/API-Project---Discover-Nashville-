@@ -249,6 +249,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	bodyBackground.park();
 	spinnerText.innerHTML = "searching parks..."
+	document.getElementById("results-header").textContent = "PARKS"
 	pageReconfigure();
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
@@ -259,6 +260,7 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	bodyBackground.concert();
 	spinnerText.innerHTML = "searching concerts..."
+	document.getElementById("results-header").textContent = "CONCERTS"
 	pageReconfigure();
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
@@ -269,6 +271,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	bodyBackground.meetup();
 	spinnerText.innerHTML = "searching meetups..."
+	document.getElementById("results-header").textContent = "MEETUPS"
 	pageReconfigure();
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
@@ -281,6 +284,7 @@ document
 		let searchTerm = document.querySelector("#search-bar").value;
 		bodyBackground.restaurant();
 		spinnerText.innerHTML = "searching restaurants..."
+		document.getElementById("results-header").textContent = "RESTAURANTS"
 		pageReconfigure();
 		API.restaurantList(searchTerm).then(data => {
 			DOM.restaurantResults(data);
