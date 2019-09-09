@@ -10,9 +10,9 @@
 h1 {
 	font-family: "oswald", cursive;
 	letter-spacing: 3px;
-	font-size: 2em !important;
+	font-size: 2em;
 	margin: 0.5em;
-	color: #72c6e7 !important;
+	color: #72c6e7;
 }
 
 h3 {
@@ -73,7 +73,7 @@ main {
 
 .itineraryWrapper {
 	/* border: 1px solid red; */
-	margin: 1em;
+	margin: 2vh;
 	padding-top: 0em;
 	height: auto;
 	/* display: none; */
@@ -84,6 +84,11 @@ main {
 	display: none;
 	padding: 0.5em;
 	position: relative; /* kw added */
+	/* height: 58vh; */
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
 }
 
 #itinerary-container {
@@ -97,18 +102,20 @@ main {
 .i1-restaurant,
 .i1-meetup,
 .i1-concert {
-	height: 24vh;
-	width: 24vh;
+	max-height: 24vh;
+	max-width: 24vh;
+	min-height: 20vh;
+	min-width: 20vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 0.4em;
 	margin: 0.4em;
-	/* vertical-align: center; */
 	position: relative;
-	/* padding: 4em 0.2em; */
 	border-radius: 5px;
 	border: 2px solid rgb(255, 217, 217);
+	flex-grow: 1;
+	flex-wrap: wrap;
 }
 
 .i1-park {
@@ -140,18 +147,17 @@ main {
 	/* padding: 0.3em; */
 	/* padding-top: 0.3em; */
 	margin: 0.2em 0.1em;
+	width: fit-content;
 }
 
 .searchResults {
 	position: relative; /* kw added to position spinner */
-	margin: 1em;
+	margin: 2vh;
 	padding: 1em;
-	/* border: 1px solid red; */
-	/* overflow: scroll; */
-	max-height: 93vh;
 	background-color: #ffffff;
 	border-radius: 15px;
 	border: 3px solid #d3ece3;
+	flex-grow: 1;
 }
 
 #search-results-container {
@@ -180,6 +186,20 @@ main {
 button:focus {
 	outline: 0;
 	background: #b0dff1;
+}
+
+#searchContainer {
+	display: flex;
+	flex-direction: column;
+	margin: 2vh;
+	margin-top: 50%;
+	padding: 0.3em;
+	justify-content: center;
+	background-color: #ffffff;
+	border-radius: 15px;
+	border: 3px solid #d3ece3;
+	text-align: center;
+	flex-grow: 1;
 }
 
 #search-bar {
@@ -211,20 +231,6 @@ button {
 	border-radius: 3px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 	background-color: #72c6e7;
-}
-
-#searchContainer {
-	/* border: 1px solid red; */
-	display: flex;
-	flex-direction: column;
-	margin: 1em;
-	margin-top: 50%;
-	padding: 0.3em;
-	justify-content: center;
-	background-color: #ffffff;
-	border-radius: 15px;
-	border: 3px solid #d3ece3;
-	text-align: center;
 }
 
 .textInput {
