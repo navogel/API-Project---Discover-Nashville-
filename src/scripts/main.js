@@ -243,6 +243,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
+		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
@@ -251,13 +252,14 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 	bodyBackground.concert();
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
-	spinnerText.innerHTML = "searching events..."
+	spinnerText.innerHTML = "searching concerts..."
 	document.querySelector("#details-page").classList = "hidden";
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
+		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
@@ -273,6 +275,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 		document.querySelector(".rightContainer").style.display = "block";
 		document.querySelector(".itineraryWrapper").style.display = "block";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
+		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
@@ -290,6 +293,7 @@ document
 			document.querySelector(".rightContainer").style.display = "block";
 			document.querySelector(".itineraryWrapper").style.display = "block";
 			document.querySelector("#searchContainer").style.marginTop = "1em";
+			document.querySelector("#search-header-wrapper").classList = "";
 		});
 	});
 

@@ -10,77 +10,80 @@
 	<link href="https://fonts.googleapis.com/css?family=Playfair+Display|Poppins&display=swap" rel="stylesheet">
 	<title>Document</title>
 </head>
-
-<body>
-	<header></header>
-	<main class="wrapper">
-		<div class="leftContainer">
-			<section id="searchContainer">
-				<h1>Plan Your Day</h1>
-				<div class="textInput">
-					<input type="text" placeholder="search" id="search-bar" />
+	<body>
+		<header></header>
+		<main class="wrapper">
+			<div class="leftContainer">
+				<div id="search-header-wrapper" class="header-transform">
+					<h1 class="search-header">Plan Your Stay</h1>
+					<h1 class="search-header">in</h1>
+					<h1 class="search-header">NASHVILLE</h1>
 				</div>
-				<div class="searchButtons">
-					<button type="button" class="searchBtn" id="search-parks">
-						parks
-					</button>
-					<button type="button" class="searchBtn" id="search-concerts">
-						events
-					</button>
-					<button type="button" class="searchBtn" id="search-restaurants">
-						restaurants
-					</button>
-					<button type="button" class="searchBtn" id="search-meetups">
-						meetups
-					</button>
-				</div>
-			</section>
-			<div class="itineraryWrapper">
-				<!-- <h3>Itinerary</h3> -->
-				<section id="itinerary-container">
-					<div class="i1-park">
-						<p class="iText">pin a park</p>
+				<section id="searchContainer">
+					<div class="textInput">
+						<input type="text" placeholder="search" id="search-bar" />
 					</div>
-					<div class="i1-meetup">
-						<p class="iText">pin a meetup</p>
-					</div>
-					<div class="i1-restaurant">
-						<p class="iText">pin a restaurant</p>
-					</div>
-					<div class="i1-concert">
-						<p class="iText">pin an event</p>
-					</div>
-				</section>
-				<div id="details-wrapper" class="details-wrap-hide">
-					<div class="hidden" id="details-page">
-						<section id="details-container"></section>
-						<button id="save-to-itinerary" class="button">pin this</button>
-						<button id="x-button" class="button">
-							<div id="x-circle">
-								<img id="blue-x" src="images/blue-x.png" alt="X">
-							</div>
+					<div class="searchButtons">
+						<button type="button" class="searchBtn" id="search-parks">
+							parks
+						</button>
+						<button type="button" class="searchBtn" id="search-concerts">
+							concerts
+						</button>
+						<button type="button" class="searchBtn" id="search-restaurants">
+							restaurants
+						</button>
+						<button type="button" class="searchBtn" id="search-meetups">
+							meetups
 						</button>
 					</div>
+				</section>
+				<div class="itineraryWrapper">
+					<!-- <h3>Itinerary</h3> -->
+					<section id="itinerary-container">
+						<div class="i1-park">
+							<p class="iText">pin a park</p>
+						</div>
+						<div class="i1-meetup">
+							<p class="iText">pin a meetup</p>
+						</div>
+						<div class="i1-restaurant">
+							<p class="iText">pin a restaurant</p>
+						</div>
+						<div class="i1-concert">
+							<p class="iText">pin an concert</p>
+						</div>
+					</section>
+					<div id="details-wrapper" class="details-wrap-hide">
+						<div class="hidden" id="details-page">
+							<section id="details-container"></section>
+							<button id="save-to-itinerary" class="button">pin this!</button>
+							<button id="x-button" class="button">
+								<div id="x-circle">
+									<img id="blue-x" src="images/blue-x.png" alt="X">
+								</div>
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="rightContainer">
-			<div class="searchResults">
-				<div class="searchFadeTop"></div>
-				<section id="search-results-container"></section>
-				<div id="spinner-container">
-					<div id="spinner-text"></div>
-					<div id="spinner"></div>
+			<div class="rightContainer">
+				<div class="searchResults">
+					<div class="searchFadeTop"></div>
+					<section id="search-results-container"></section>
+					<div id="spinner-container">
+						<div id="spinner-text"></div>
+						<div id="spinner"></div>
+					</div>
+					<div class="searchFadeBottom"></div>
 				</div>
-				<div class="searchFadeBottom"></div>
 			</div>
-		</div>
-	</main>
+		</main>
 
-	<footer></footer>
-	<script src="scripts/main.js"></script>
-	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2v4cY_9dFxj9VQx2hwtUwqzpqT6ZskTg&callback=initMap"
+		<footer></footer>
+		<script src="scripts/main.js"></script>
+		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2v4cY_9dFxj9VQx2hwtUwqzpqT6ZskTg&callback=initMap"
   type="text/javascript"></script> -->
-</body>
+	</body>
 
 </html>
