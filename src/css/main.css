@@ -12,6 +12,7 @@ h1 {
 	letter-spacing: 3px;
 	font-size: 2em !important;
 	margin: 0.5em;
+	color: #72c6e7 !important;
 }
 
 h3 {
@@ -26,7 +27,9 @@ body {
 	justify-content: center;
 	align-items: center;
 	background-image: url("../images/21.jpg");
-	background-size: cover;
+	background-size: 1000px;
+	background-repeat: repeat;
+
 	/* background-repeat: repeat; */
 }
 
@@ -42,10 +45,12 @@ main {
 	background-image: url("/src/images/nashblue.png");
 	position: absolute;
 	width: 100%;
-	height: 28%;
+	height: 30%;
 	z-index: -1;
-	top: 62%;
-	background-size: contain;
+	bottom: 0;
+	background-size: 800px;
+	background-repeat: repeat-x;
+	background-position: bottom;
 }
 
 .leftContainer {
@@ -165,20 +170,25 @@ main {
 /* remove blue bar from buttons */
 button:focus {
 	outline: 0;
+	background: #b0dff1;
 }
 
 #search-bar:focus {
 	outline: 0;
 }
 
+button {
+	cursor: pointer;
+}
+
 #search-results-container::-webkit-scrollbar {
 	width: 10px;
-	background-color: #f08e8e93;
+	background-color: #b0dff1;
 }
 #search-results-container::-webkit-scrollbar-thumb {
 	border-radius: 3px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	background-color: #f08e8e;
+	background-color: #72c6e7;
 }
 
 #searchContainer {
@@ -219,9 +229,9 @@ button:focus {
 	transition: all 0.2s;
 	margin-top: 0.7em;
 	margin-bottom: 0.5em;
-	border: 0.07em solid #f08e8e;
-	color: black;
-	background-color: #d3ece3;
+	border: 0.07em solid white;
+	color: white;
+	background-color: #72c6e7;
 }
 /* pink #f08e8e   green  #d3ece3  */
 .searchBtn:hover {

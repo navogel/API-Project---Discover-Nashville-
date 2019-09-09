@@ -9,6 +9,8 @@ const itinObj = {
 	concert: {}
 };
 
+const savedItins = [];
+
 // web Component station
 
 const WEB = {
@@ -255,3 +257,8 @@ document.querySelector("#search-results-container").addEventListener("click", ev
 });
 
 //save itinobj
+
+document.querySelector(".saveItin").addEventListener("click", event => {
+	savedItins.push(itinObj);
+	console.log(savedItins);
+});
