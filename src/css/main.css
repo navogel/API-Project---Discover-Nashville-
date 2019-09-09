@@ -168,10 +168,31 @@ main {
 	padding-top: 0.5em;
 }
 
+/* #search-results-container > section > button:hover {
+	transform: scale(1.1);
+	transition: 0.5s;
+	background: white;
+	z-index: 9999 !important;
+	position: absolute;
+} */
+
 /* remove blue bar from buttons */
 button:focus {
 	outline: 0;
 	background: #b0dff1;
+}
+
+#search-bar {
+	border: 2px dotted black;
+	border-radius: 3px;
+	padding: 0.1em;
+	padding-top: 0.4em;
+	height: 2.3em;
+}
+
+::placeholder {
+	color: black;
+	font-size: 1.2em;
 }
 
 #search-bar:focus {
@@ -500,3 +521,29 @@ button {
 }
 
 /* hover info */
+
+[data-title]:hover:after {
+	opacity: 1;
+	transition: all 0.1s ease 0.5s;
+	visibility: visible;
+}
+[data-title]:after {
+	content: attr(data-title);
+	background-color: #f8cfee;
+	color: #111;
+	font-size: 70%;
+	position: absolute;
+	padding: 0px 3px 0px 3px;
+	bottom: -2.7em;
+	left: 20%;
+	white-space: nowrap;
+	box-shadow: 1px 1px 3px #222222;
+	opacity: 0;
+	/* border: 1px solid #ffffff; */
+	z-index: 99999;
+	visibility: hidden;
+	border-radius: 5px;
+}
+[data-title] {
+	position: relative;
+}

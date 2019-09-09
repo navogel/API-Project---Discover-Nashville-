@@ -26,7 +26,7 @@ const WEB = {
 		let parkAddress = JSON.parse(item.mapped_location.human_address);
 		let parkData = `
         <section >
-        <button title="${parkAddress.address}, ${parkAddress.city} ${parkAddress.state}" id="${i}" name="parkArray" class="button">${item.park_name}</h1>
+        <button data-title="${parkAddress.address}, ${parkAddress.city} ${parkAddress.state}" id="${i}" name="parkArray" class="button">${item.park_name}</h1>
         </section>`;
 		return parkData;
 	},
