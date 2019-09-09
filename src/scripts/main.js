@@ -362,3 +362,22 @@ const backgroundSetter = {
 		document.querySelector(".i1-meetup").style.backgroundImage = "url('/src/images/meetup.jpg')";
 	}
 };
+
+document.querySelector("#btnSaveItinerary").addEventListener("click", e => {
+	console.log(itinObj);
+	saveItinerary(itinObj);
+	
+});
+
+
+saveItinerary = (save) => {
+	fetch("http://localhost:8088/itinerary", {
+		method: 'POST',
+		body: JSON.stringify(save),
+		headers: {
+			'Content-Type': 'application/json'
+		} 
+	 }).then (res => res.json()) 
+	   .then(response => console.log('Success:', JSON.stringify(response)))
+	   .catch(error => console.log('Error:', error));
+	}
