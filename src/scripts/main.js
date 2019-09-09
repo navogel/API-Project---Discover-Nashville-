@@ -206,7 +206,7 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "flex";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
 	});
 });
@@ -220,7 +220,7 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "flex";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
 	});
 });
@@ -234,7 +234,7 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "flex";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
 	});
 });
@@ -248,7 +248,7 @@ document.querySelector("#search-restaurants").addEventListener("click", event =>
 	API.restaurantList(searchTerm).then(data => {
 		DOM.restaurantResults(data);
 		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "flex";
 		document.querySelector("#searchContainer").style.marginTop = "1em";
 	});
 });
