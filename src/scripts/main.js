@@ -238,12 +238,12 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching parks..."
 	document.querySelector("#details-page").classList = "hidden";
+	document.querySelector(".rightContainer").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector("#searchContainer").style.marginTop = "1em";
+	document.querySelector("#search-header-wrapper").classList = "";
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
-		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
-		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
@@ -254,12 +254,12 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching concerts..."
 	document.querySelector("#details-page").classList = "hidden";
+	document.querySelector(".rightContainer").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector("#searchContainer").style.marginTop = "1em";
+	document.querySelector("#search-header-wrapper").classList = "";
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
-		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
-		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
@@ -270,30 +270,30 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching meetups..."
 	document.querySelector("#details-page").classList = "hidden";
+	document.querySelector(".rightContainer").style.display = "block";
+	document.querySelector(".itineraryWrapper").style.display = "block";
+	document.querySelector("#searchContainer").style.marginTop = "1em";
+	document.querySelector("#search-header-wrapper").classList = "";
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
-		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
-		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#search-header-wrapper").classList = "";
 	});
 });
 
 document
 	.querySelector("#search-restaurants")
 	.addEventListener("click", event => {
-		bodyBackground.restaurant();
 		let searchTerm = document.querySelector("#search-bar").value;
+		bodyBackground.restaurant();
 		searchResultsContainer.innerHTML = ""
 		spinnerContainer.style.display = "inline";
 		spinnerText.innerHTML = "searching restaurants..."
 		document.querySelector("#details-page").classList = "hidden";
+		document.querySelector(".rightContainer").style.display = "block";
+		document.querySelector(".itineraryWrapper").style.display = "block";
+		document.querySelector("#searchContainer").style.marginTop = "1em";
+		document.querySelector("#search-header-wrapper").classList = "";
 		API.restaurantList(searchTerm).then(data => {
 			DOM.restaurantResults(data);
-			document.querySelector(".rightContainer").style.display = "block";
-			document.querySelector(".itineraryWrapper").style.display = "block";
-			document.querySelector("#searchContainer").style.marginTop = "1em";
-			document.querySelector("#search-header-wrapper").classList = "";
 		});
 	});
 
