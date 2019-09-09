@@ -20,6 +20,7 @@ h3 {
 	letter-spacing: 3px;
 	font-size: 1.2em;
 	margin: 0.3em 0em 0em 0em;
+	color: #72c6e7;
 }
 
 body {
@@ -456,9 +457,9 @@ button {
 	left: 50%;
 	width: 50px;
 	height: 50px;
-	border: 10px solid #e5f5ef;
+	border: 10px solid #c3e0f1;
 	border-radius: 100%;
-	border-top: 10px solid #b6ddcf;
+	border-top: 10px solid #72c6e7;
 	-webkit-animation: spin 0.4s linear infinite;
 	animation: spin 0.4s linear infinite;
 }
