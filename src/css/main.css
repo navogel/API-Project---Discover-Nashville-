@@ -11,8 +11,7 @@
 h1 {
 	/* font-family: "Abril Fatface", cursive; */
 	font-family: 'Playfair Display', serif;
-	letter-spacing: 3px;
-	font-size: 50px; !important;
+	/* letter-spacing: 3px; */
 	line-height: 0em;
 }
 
@@ -175,7 +174,7 @@ main {
 	display: flex;
 	flex-direction: column;
 	margin: 1em;
-	margin-top: 30%;
+	margin-top: 60px;
 	padding: 1em;
 	justify-content: center;
 	background-color: #ffffff;
@@ -215,6 +214,13 @@ main {
 	filter: drop-shadow(0 0 15px black);
 	font-weight: 100;
 	width: 100%;
+	font-size: 50px !important;
+}
+
+
+
+#nashville {
+	letter-spacing: 3px; 
 }
 
 #search-header-wrapper{
@@ -224,13 +230,12 @@ main {
 	flex-wrap: wrap;
 	align-items: center;
 	z-index: 2;
-	/* width: 100vw; */
 	align-self: center;
-	/* backdrop-filter: brightness(0.7); */
+	padding: 50px;
 }
 
 .header-transform {
-	transform: translate(0px, 80px);
+	transform: translate(0px, 20px);
 }
 
 

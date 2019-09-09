@@ -1,7 +1,7 @@
 // change y transform of details page 
 window.addEventListener('scroll', function () {
 	var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-	var detailsPos = 0.72 * scrollPos;
+	var detailsPos = 0.55 * scrollPos;
     document.documentElement.style.setProperty('--scrollPos', `${detailsPos}px`);
     }
 )
@@ -229,19 +229,27 @@ const bodyBackground = {
 
 //array variables
 
-//add event listeners to buttons
 
-document.querySelector("#search-parks").addEventListener("click", event => {
-	let searchTerm = document.querySelector("#search-bar").value;
-	bodyBackground.park();
+// page reconfigure on search button clicks
+
+const pageReconfigure = () => {
 	searchResultsContainer.innerHTML = ""
 	spinnerContainer.style.display = "inline";
-	spinnerText.innerHTML = "searching parks..."
 	document.querySelector("#details-page").classList = "hidden";
 	document.querySelector(".rightContainer").style.display = "block";
 	document.querySelector(".itineraryWrapper").style.display = "block";
 	document.querySelector("#searchContainer").style.marginTop = "1em";
 	document.querySelector("#search-header-wrapper").classList = "";
+	document.querySelector("#search-header-wrapper").style.padding = "0px";
+};
+
+//add event listeners to buttons
+
+document.querySelector("#search-parks").addEventListener("click", event => {
+	let searchTerm = document.querySelector("#search-bar").value;
+	bodyBackground.park();
+	spinnerText.innerHTML = "searching parks..."
+	pageReconfigure();
 	API.parkList(searchTerm).then(data => {
 		DOM.parkResult(data);
 	});
@@ -250,14 +258,8 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	bodyBackground.concert();
-	searchResultsContainer.innerHTML = ""
-	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching concerts..."
-	document.querySelector("#details-page").classList = "hidden";
-	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
-	document.querySelector("#searchContainer").style.marginTop = "1em";
-	document.querySelector("#search-header-wrapper").classList = "";
+	pageReconfigure();
 	API.tmArray(searchTerm).then(data => {
 		DOM.tmResults(data);
 	});
@@ -266,14 +268,8 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
 	bodyBackground.meetup();
-	searchResultsContainer.innerHTML = ""
-	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching meetups..."
-	document.querySelector("#details-page").classList = "hidden";
-	document.querySelector(".rightContainer").style.display = "block";
-	document.querySelector(".itineraryWrapper").style.display = "block";
-	document.querySelector("#searchContainer").style.marginTop = "1em";
-	document.querySelector("#search-header-wrapper").classList = "";
+	pageReconfigure();
 	API.eventbrite(searchTerm).then(data => {
 		DOM.ebResults(data);
 	});
@@ -284,14 +280,8 @@ document
 	.addEventListener("click", event => {
 		let searchTerm = document.querySelector("#search-bar").value;
 		bodyBackground.restaurant();
-		searchResultsContainer.innerHTML = ""
-		spinnerContainer.style.display = "inline";
 		spinnerText.innerHTML = "searching restaurants..."
-		document.querySelector("#details-page").classList = "hidden";
-		document.querySelector(".rightContainer").style.display = "block";
-		document.querySelector(".itineraryWrapper").style.display = "block";
-		document.querySelector("#searchContainer").style.marginTop = "1em";
-		document.querySelector("#search-header-wrapper").classList = "";
+		pageReconfigure();
 		API.restaurantList(searchTerm).then(data => {
 			DOM.restaurantResults(data);
 		});
