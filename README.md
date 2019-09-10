@@ -2,7 +2,7 @@
 
 ## UX Target Demographic: housewives and stay-at-home moms.
 
-###Tech Used:
+#Tech Used:
 
 ####Zomato Restaraunt API
 ####Eventbrite API
