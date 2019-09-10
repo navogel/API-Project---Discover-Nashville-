@@ -1,9 +1,3 @@
-// change y transform of details page
-window.addEventListener("scroll", function() {
-	var scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-	var detailsPos = 0.72 * scrollPos;
-	document.documentElement.style.setProperty("--scrollPos", `${detailsPos}px`);
-});
 
 //declare array variables
 const allArrays = {
@@ -199,6 +193,8 @@ const DOM = {
 
 document.querySelector("#search-parks").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	detailsHide();
+	bodyBackground.park();
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching parks...";
@@ -213,6 +209,8 @@ document.querySelector("#search-parks").addEventListener("click", event => {
 
 document.querySelector("#search-concerts").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	detailsHide();
+	bodyBackground.concert();
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching events...";
@@ -227,6 +225,8 @@ document.querySelector("#search-concerts").addEventListener("click", event => {
 
 document.querySelector("#search-meetups").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	detailsHide();
+	bodyBackground.meetup();
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching meetups...";
@@ -241,6 +241,8 @@ document.querySelector("#search-meetups").addEventListener("click", event => {
 
 document.querySelector("#search-restaurants").addEventListener("click", event => {
 	let searchTerm = document.querySelector("#search-bar").value;
+	detailsHide();
+	bodyBackground.restaurant();
 	searchResultsContainer.innerHTML = "";
 	spinnerContainer.style.display = "inline";
 	spinnerText.innerHTML = "searching restaurants...";
@@ -381,3 +383,27 @@ saveItinerary = (save) => {
 	   .then(response => console.log('Success:', JSON.stringify(response)))
 	   .catch(error => console.log('Error:', error));
 	}
+
+	const bodyBackground = {
+		park: () => { 
+			var parkImg = new Image();
+			parkImg.onload = function (){document.body.style.backgroundImage = "url('images/nash-park.jpg')";}
+			parkImg.src = 'images/nash-park.jpg';
+		},
+		concert: () => { 
+			var concertImg = new Image();
+			concertImg.onload = function (){document.body.style.backgroundImage = "url('images/ryman.jpeg')";}
+			concertImg.src = 'images/ryman.jpeg';
+		},
+		restaurant: () => { 
+			var restaurantImg = new Image();
+			restaurantImg.onload = function (){document.body.style.backgroundImage = "url('images/nickys.jpg')";}
+			restaurantImg.src = 'images/nickys.jpg';
+		},
+		meetup: () => { 
+			var meetupImg = new Image();
+			meetupImg.onload = function (){document.body.style.backgroundImage = "url('images/public-square.jpg')";}
+			meetupImg.src = 'images/public-square.jpg';
+		}
+	};
+	

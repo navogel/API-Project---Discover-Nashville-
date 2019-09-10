@@ -1,87 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="css/main.css" />
-		<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Special+Elite&display=swap" rel="stylesheet" />
-		<title>Document</title>
-	</head>
 
-	<body>
-		<header></header>
-		<div class="skyline"></div>
-		<main class="wrapper">
-			<div class="leftContainer">
-				<section id="searchContainer">
-					<h1>Discover Nashville</h1>
-					<div class="textInput">
-						<input type="text" placeholder="search" id="search-bar" />
-					</div>
-					<div class="searchButtons">
-						<button type="button" class="searchBtn" id="search-parks">
-							parks
-						</button>
-						<button type="button" class="searchBtn" id="search-concerts">
-							events
-						</button>
-						<button type="button" class="searchBtn" id="search-restaurants">
-							restaurants
-						</button>
-						<button type="button" class="searchBtn" id="search-meetups">
-							meetups
-						</button>
-					</div>
-				</section>
-				<div class="itineraryWrapper">
-					<div class="itinContent">
-						<a class="saveItin"><h3>Itinerary</h3></a>
-						<section id="itinerary-container">
-							<div class="i1-park">
-								<p class="iText">pin a park</p>
-							</div>
-							<div class="i1-meetup">
-								<p class="iText">pin a meetup</p>
-							</div>
-							<div class="i1-restaurant">
-								<p class="iText">pin a restaurant</p>
-							</div>
-							<div class="i1-concert">
-								<p class="iText">pin an event</p>
-							</div>
-						</section>
-					</div>
-					<div id="details-wrapper" class="details-wrap-hide">
-						<div class="hidden" id="details-page">
-							<section id="details-container"></section>
-							<button id="save-to-itinerary" class="button">pin this</button>
-							<button id="x-button" class="button">
-								<div id="x-circle">
-									<img id="blue-x" src="images/blue-x.png" alt="X" />
-								</div>
-							</button>
-						</div>
-					</div>
-					<button type="button"  id="btnSaveItinerary">
-						save
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Special+Elite&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+	<title>Discover Nashville</title>
+</head>
+
+<body>
+	<header></header>
+	<div class="skyline"></div>
+	<main class="wrapper">
+		<div class="leftContainer">
+			<section id="searchContainer">
+				<h1>DISCOVER NASHVILLE</h1>
+				<div class="textInput">
+					<input type="text" placeholder="search anything..." id="search-bar" />
+				</div>
+				<div class="searchButtons">
+					<button type="button" class="searchBtn" id="search-parks">
+						parks
+					</button>
+					<button type="button" class="searchBtn" id="search-concerts">
+						events
+					</button>
+					<button type="button" class="searchBtn" id="search-restaurants">
+						restaurants
+					</button>
+					<button type="button" class="searchBtn" id="search-meetups">
+						meetups
 					</button>
 				</div>
+			</section>
+			<div class="itineraryWrapper">
+				<div class="itinContent">
+					<a class="saveItin">
+						<h3>ITINERARY</h3>
+					</a>
+					<section id="itinerary-container">
+						<div class="i1-park">
+							<p class="iText">pin a park</p>
+						</div>
+						<div class="i1-meetup">
+							<p class="iText">pin a meetup</p>
+						</div>
+						<div class="i1-restaurant">
+							<p class="iText">pin a restaurant</p>
+						</div>
+						<div class="i1-concert">
+							<p class="iText">pin an event</p>
+						</div>
+					</section>
+				</div>
+				<button type="button" id="btnSaveItinerary">
+					save
+				</button>
 			</div>
-			<div class="rightContainer">
-				<div class="searchResults">
-					<section id="search-results-container"></section>
-					<div id="spinner-container">
-						<div id="spinner-text"></div>
-						<div id="spinner"></div>
+		</div>
+		<div class="rightContainer">
+			<div class="searchResults">
+				<section id="search-results-container"></section>
+				<div id="spinner-container">
+					<div id="spinner-text"></div>
+					<div id="spinner"></div>
+				</div>
+				<div id="details-wrapper" class="details-wrap-hide">
+					<div class="hidden" id="details-page">
+						<section id="details-container"></section>
+						<button id="save-to-itinerary" class="button">pin this</button>
+						<button id="x-button" class="button">
+							<div id="x-circle">
+								<img id="blue-x" src="images/blue-x.png" alt="X" />
+							</div>
+						</button>
 					</div>
 				</div>
 			</div>
-		</main>
+		</div>
+	</main>
 
-		<footer></footer>
-		<script src="scripts/main.js"></script>
-		<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2v4cY_9dFxj9VQx2hwtUwqzpqT6ZskTg&callback=initMap"
+	<footer></footer>
+	<script src="scripts/main.js"></script>
+	<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2v4cY_9dFxj9VQx2hwtUwqzpqT6ZskTg&callback=initMap"
   type="text/javascript"></script> -->
-	</body>
+</body>
+
 </html>
