@@ -2,13 +2,13 @@
 
 ## UX Target Demographic: housewives and stay-at-home moms.
 
-#Tech Used:
+Tech Used:
 
-####Zomato Restaraunt API
-####Eventbrite API
-####Ticketmaster API
-####Nashville Parks API
+1.Zomato Restaraunt API
+2. Eventbrite API
+3. Ticketmaster API
+4. Nashville Parks API
 
-####Flexbox - fully responsive design
-####Javascript - manipulating data, populating the DOM
-####JSON server - storing and retrieving data
+5.Flexbox - fully responsive design
+6.Javascript - manipulating data, populating the DOM
+7.JSON server - storing and retrieving data
