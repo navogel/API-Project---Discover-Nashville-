@@ -5,22 +5,64 @@
 * {
 	box-sizing: border-box;
 	/* font-family: "Abril Fatface", cursive; */
-	font-family: "Special Elite", cursive;
+	font-family: "Special Elite", sans-serif;
 }
 h1 {
-	font-family: "oswald", cursive;
+	font-family: "oswald", sans-serif;
 	letter-spacing: 3px;
 	font-size: 2em;
 	margin: 0.5em;
-	color: #72c6e7;
+	color: #3a8eaf;
+}
+
+.title-card {
+	font-size: 4em;
+	padding: 0.5em;
+	margin-top: 9%;
+	text-align: center;
 }
 
 h3 {
-	font-family: "Special Elite", cursive;
+	font-family: "oswald", sans-serif;
 	letter-spacing: 3px;
-	font-size: 1.2em;
-	margin: 0.3em 0em 0em 0em;
-	color: #72c6e7;
+	font-size: 1em;
+	margin: 0em 0em 0em 0em;
+	color: #3a8eaf;
+}
+
+.dropdown-content {
+	display: none;
+}
+
+.dropdown-content > p {
+	color: black;
+	padding: 0;
+	display: block;
+	margin: 0.5em;
+	font-size: 0.8em;
+	height: 30px;
+}
+
+.show {
+	display: block;
+	transition: 0.5s;
+}
+
+.arrow-down {
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-top: 10px solid #3a8eaf;
+	position: relative;
+	top: 12px;
+	left: -8px;
+	border-radius: 5px 5px 5px 0px;
+	/* margin-bottom: 0; */
+	transition: 0.3s;
+	/* float: right; */
+	/* margin-top: 0.7em; */
+	/* padding-bottom: .5em; */
 }
 
 body {
@@ -30,8 +72,13 @@ body {
 	background-image: url("../images/21.jpg");
 	background-size: 1000px;
 	background-repeat: repeat;
+	flex-direction: column;
 
 	/* background-repeat: repeat; */
+}
+
+.row {
+	flex-direction: row;
 }
 
 main {
@@ -65,6 +112,7 @@ main {
 	display: none;
 	min-width: 350px;
 	flex: 1 1 0;
+	height: -webkit-fill-available;
 }
 
 /* SEARCH BOX CONTAINER */
@@ -73,11 +121,11 @@ main {
 	display: flex;
 	flex-direction: column;
 	margin: 2vh;
-	margin-top: 60%;
+	/* margin-top: 60%; */
 	padding: 0.3em;
 	justify-content: center;
 	background-color: #ffffff;
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 3px solid #d3ece3;
 	text-align: center;
 	flex-grow: 1;
@@ -107,7 +155,7 @@ main {
 #search-results-container::-webkit-scrollbar-thumb {
 	border-radius: 3px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-	background-color: #72c6e7;
+	background-color: #3a8eaf;
 }
 
 .textInput {
@@ -136,7 +184,7 @@ main {
 	margin-bottom: 0.5em;
 	border: 0.07em solid white;
 	color: white;
-	background-color: #72c6e7;
+	background-color: #3a8eaf;
 }
 
 .searchBtn:hover {
@@ -153,9 +201,24 @@ main {
 	margin: 2vh;
 	padding: 1em;
 	background-color: #ffffff;
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 3px solid #d3ece3;
 	flex-grow: 1;
+	overflow: hidden;
+}
+
+.resultsTitle {
+	margin: 0;
+	display: none;
+}
+
+.resultsTitleContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.resultsTitleContainer > img {
+	margin: 0.5em;
 }
 
 #search-results-container {
@@ -187,7 +250,7 @@ main {
 	padding-top: 0em;
 	height: auto;
 	background-color: #ffffff;
-	border-radius: 15px;
+	border-radius: 10px;
 	border: 3px solid #d3ece3;
 	text-align: center;
 	display: none;
@@ -268,7 +331,7 @@ main {
 /* remove blue bar from buttons */
 button:focus {
 	outline: 0;
-	background: #b0dff1;
+	/* background: #fdfdfd; */
 }
 
 button {
@@ -471,7 +534,7 @@ button {
 	z-index: 2;
 	border: 10px solid #c0dde9;
 	border-radius: 50%;
-	border-top: 10px solid #72c6e7;
+	border-top: 10px solid #3a8eaf;
 	-webkit-animation: spin 0.4s linear infinite;
 	animation: spin 0.4s linear infinite;
 }
@@ -519,11 +582,12 @@ button {
 }
 [data-title]:after {
 	content: attr(data-title);
-	background-color: #f8cfee;
-	color: #111;
+	background-color: #3a8eaf;
+	color: rgb(255, 255, 255);
+	font-family: "oswald", sans-serif;
 	font-size: 70%;
 	position: absolute;
-	padding: 0px 3px 0px 3px;
+	padding: 0px 8px 0px 8px;
 	bottom: -2.7em;
 	left: 20%;
 	white-space: nowrap;
